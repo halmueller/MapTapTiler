@@ -13,8 +13,16 @@ public struct MapSourceDescription {
     public let identifier: MapSourceIdentifier
     public let name: String
     public let attribution: String
+    public let webpageURLString: String? = nil
+    public let legendURLString: String? = nil
     public let isOpaque: Bool
 
+    /// Tiles older than this age should be refreshed from source if possible.
+    public let refreshCacheAge: TimeInterval = 30.0 * 24.0 * 60.0 * 60.0
+    /// Tiles older than this age must not be displayed, even if new tiles are unavailable.
+    public let tooStaleCacheAge: TimeInterval = Double.infinity
+
+    /// What Apple map type do we use as the underlay/basemap?
     public let appleMapType: MKMapType
     public let isAppleMap: Bool
     

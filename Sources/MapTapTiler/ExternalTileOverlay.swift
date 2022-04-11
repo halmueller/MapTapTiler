@@ -10,7 +10,10 @@ import MapKit
 
 public class ExternalTileOverlay: MKTileOverlay {
     let parentDirectory = "tilecache"
-    let maximumCacheAge: TimeInterval = 30.0 * 24.0 * 60.0 * 60.0
+    /// Tiles older than this age should be refreshed from source if possible.
+    public let refreshCacheAge: TimeInterval = 30.0 * 24.0 * 60.0 * 60.0
+    /// Tiles older than this age must not be displayed, even if new tiles are unavailable.
+    public let tooStaleCacheAge: TimeInterval = Double.infinity
     var urlSession: URLSession?
     let cacheName: String
 	let cacheExtension: String
@@ -69,7 +72,7 @@ public class ExternalTileOverlay: MKTileOverlay {
         if FileManager.default.fileExists(atPath: tileFilePath) {
             if let fileAttributes = try? FileManager.default.attributesOfItem(atPath: tileFilePath),
                 let fileModificationDate = fileAttributes[FileAttributeKey.modificationDate] as? Date {
-                if fileModificationDate.timeIntervalSinceNow > -1.0 * maximumCacheAge {
+                if fileModificationDate.timeIntervalSinceNow > -1.0 * refreshCacheAge {
                     useCachedVersion = true
                 }
             }
@@ -131,6 +134,8 @@ public class ExternalTileOverlay: MKTileOverlay {
     }
     
 /*
+ From https://stackoverflow.com/a/69148976/719690
+ 
     func tiles(in rect: MKMapRect, zoomScale scale: MKZoomScale) -> [ImageTile]? {
         var z = zoomScaleToZoomLevel(scale)
         

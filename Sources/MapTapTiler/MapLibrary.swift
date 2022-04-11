@@ -199,7 +199,8 @@ public class MapLibrary {
  
  https://openmaptiles.org/docs/host/tileserver-gl/
  
- CyclOSM: https://c.tile-cyclosm.openstreetmap.fr (That's what QTH.app uses for cycle layer). See https://www.cyclosm.org/#map=12/52.3728/4.8936/cyclosm. Max zoom is 16, see https://a.tile-cyclosm.openstreetmap.fr/cyclosm/16/10485/22863.png.
+ CyclOSM: https://c.tile-cyclosm.openstreetmap.fr (That's what QTH.app uses for cycle layer). See https://www.cyclosm.org/#map=12/52.3728/4.8936/cyclosm. Max zoom is 16, see https://a.tile-cyclosm.openstreetmap.fr/cyclosm/16/10485/22863.png
+     https://a.tile-cyclosm.openstreetmap.fr/cyclosm/13/4204/2690.png
  
  Stamen watercolor (now worldwide): http://maps.stamen.com/watercolor/#4/37.77/-122.45
  
