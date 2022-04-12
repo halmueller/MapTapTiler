@@ -43,10 +43,10 @@ public struct MapSourceDescription {
     public let isAppleMap: Bool
     
     // for MKTileOverlay creation:
-    let tileURLTemplate: String
-    let cacheName: String
-	let cacheExtension: String
-    let tileWidth: Double
+    public let tileURLTemplate: String
+    public let cacheName: String
+    public let cacheExtension: String
+    public let tileWidth: Double
     public let tileHeight: Double
     public let isGeometryFlipped: Bool
     public let minimumZ: Int
