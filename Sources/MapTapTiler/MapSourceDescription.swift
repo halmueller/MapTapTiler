@@ -10,6 +10,23 @@ import Foundation
 import MapKit
 
 public struct MapSourceDescription {
+    public init(name: String, attribution: String, isOpaque: Bool, appleMapType: MKMapType, isAppleMap: Bool, tileURLTemplate: String, cacheName: String, cacheExtension: String, tileWidth: Double, tileHeight: Double, isGeometryFlipped: Bool, minimumZ: Int, maximumServerZ: Int, maximumOverzoomZ: Int) {
+        self.name = name
+        self.attribution = attribution
+        self.isOpaque = isOpaque
+        self.appleMapType = appleMapType
+        self.isAppleMap = isAppleMap
+        self.tileURLTemplate = tileURLTemplate
+        self.cacheName = cacheName
+        self.cacheExtension = cacheExtension
+        self.tileWidth = tileWidth
+        self.tileHeight = tileHeight
+        self.isGeometryFlipped = isGeometryFlipped
+        self.minimumZ = minimumZ
+        self.maximumServerZ = maximumServerZ
+        self.maximumOverzoomZ = maximumOverzoomZ
+    }
+    
     public let name: String
     public let attribution: String
     public let webpageURLString: String? = nil
