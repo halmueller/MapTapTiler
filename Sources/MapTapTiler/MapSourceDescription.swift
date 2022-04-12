@@ -10,7 +10,7 @@ import Foundation
 import MapKit
 
 public struct MapSourceDescription {
-    public init(name: String, attribution: String, isOpaque: Bool, appleMapType: MKMapType, isAppleMap: Bool, tileURLTemplate: String, cacheName: String, cacheExtension: String, tileWidth: Double, tileHeight: Double, isGeometryFlipped: Bool, minimumZ: Int, maximumServerZ: Int, maximumOverzoomZ: Int) {
+    public init(name: String, attribution: String, isOpaque: Bool, appleMapType: MKMapType, isAppleMap: Bool, tileURLTemplate: String, cacheName: String, cacheExtension: String, tileWidth: Double, tileHeight: Double, isGeometryFlipped: Bool, minimumZ: Int, maximumServerZ: Int, maximumOverzoomZ: Int = 0) {
         self.name = name
         self.attribution = attribution
         self.isOpaque = isOpaque
