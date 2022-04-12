@@ -10,7 +10,6 @@ import Foundation
 import MapKit
 
 public struct MapSourceDescription {
-    public let identifier: MapSourceIdentifier
     public let name: String
     public let attribution: String
     public let webpageURLString: String? = nil

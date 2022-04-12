@@ -17,13 +17,11 @@ public class ExternalTileOverlay: MKTileOverlay {
     var urlSession: URLSession?
     let cacheName: String
 	let cacheExtension: String
-	let sourceIdentifier: MapSourceIdentifier
     let maximumServerZ: Int
 
     public init(sourceDescription: MapSourceDescription) {
         self.cacheName = sourceDescription.cacheName
 		self.cacheExtension = sourceDescription.cacheExtension
-		self.sourceIdentifier = sourceDescription.identifier
         self.maximumServerZ = sourceDescription.maximumServerZ
 
         super.init(urlTemplate: sourceDescription.tileURLTemplate)
@@ -48,14 +46,14 @@ public class ExternalTileOverlay: MKTileOverlay {
 		#endif
     }
 
-    public override func url(forTilePath path: MKTileOverlayPath) -> URL {
-		if sourceIdentifier == .NRLDNC || sourceIdentifier == .NRLENC {
-			// These two sources (and maybe all NRL sources?) start the Z tiling scale at 1, not 0, and have a Y offset of 1000
-			let substitutePath = MKTileOverlayPath(x: path.x, y: path.y - 1000, z: path.z + 1, contentScaleFactor: path.contentScaleFactor)
-			return super.url(forTilePath: substitutePath)
-		}
-		return super.url(forTilePath: path)
-	}
+//    public override func url(forTilePath path: MKTileOverlayPath) -> URL {
+//		if sourceIdentifier == .NRLDNC || sourceIdentifier == .NRLENC {
+//			// These two sources (and maybe all NRL sources?) start the Z tiling scale at 1, not 0, and have a Y offset of 1000
+//			let substitutePath = MKTileOverlayPath(x: path.x, y: path.y - 1000, z: path.z + 1, contentScaleFactor: path.contentScaleFactor)
+//			return super.url(forTilePath: substitutePath)
+//		}
+//		return super.url(forTilePath: path)
+//	}
 
     public override func loadTile(at path: MKTileOverlayPath, result: @escaping (Data?, Error?) -> Void) {
 

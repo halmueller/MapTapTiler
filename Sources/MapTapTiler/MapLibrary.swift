@@ -43,85 +43,85 @@ public class MapLibrary {
 		if #available(iOS 11.0, *) {standardUnderlayMapType = MKMapType.mutedStandard}
 		else {standardUnderlayMapType = MKMapType.standard}
 
-		let appleStandardDef = MapSourceDescription(identifier: .appleStandard, name: "Apple Standard", attribution: "Apple Maps", isOpaque: true, appleMapType: MKMapType.standard, isAppleMap: true,
+		let appleStandardDef = MapSourceDescription(name: "Apple Standard", attribution: "Apple Maps", isOpaque: true, appleMapType: MKMapType.standard, isAppleMap: true,
                                                     tileURLTemplate: "", cacheName: "", cacheExtension: "", tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 19, maximumOverzoomZ: 19)
-		let appleSatelliteDef = MapSourceDescription(identifier: .appleSatellite, name: "Apple Satellite", attribution: "Apple Maps", isOpaque: true, appleMapType: MKMapType.satellite, isAppleMap: true,
+		let appleSatelliteDef = MapSourceDescription(name: "Apple Satellite", attribution: "Apple Maps", isOpaque: true, appleMapType: MKMapType.satellite, isAppleMap: true,
 		                                             tileURLTemplate: "", cacheName: "", cacheExtension: "", tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 19, maximumOverzoomZ: 19)
-		let appleHybridDef = MapSourceDescription(identifier: .appleHybrid, name: "Apple Hybrid", attribution: "Apple Maps", isOpaque: true, appleMapType: MKMapType.hybrid, isAppleMap: true,
+		let appleHybridDef = MapSourceDescription(name: "Apple Hybrid", attribution: "Apple Maps", isOpaque: true, appleMapType: MKMapType.hybrid, isAppleMap: true,
 		                                          tileURLTemplate: "", cacheName: "", cacheExtension: "", tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 19, maximumOverzoomZ: 19)
 
-        let openStreetMap = MapSourceDescription(identifier: .openStreetMap, name: "OpenStreetMap", attribution: "OpenStreetMap default map", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
+        let openStreetMap = MapSourceDescription(name: "OpenStreetMap", attribution: "OpenStreetMap default map", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
                                                  tileURLTemplate: "https://b.tile.openstreetmap.org/{z}/{x}/{y}.png", cacheName: "OpenStreetMap", cacheExtension: "png",
                                                  tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 19, maximumOverzoomZ: 19)
 
-		let stamenTerrain = MapSourceDescription(identifier: .stamenTerrain, name: "Stamen Terrain", attribution: "Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL. Stamen Design rendering of OpenStreetMap data", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
+		let stamenTerrain = MapSourceDescription(name: "Stamen Terrain", attribution: "Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL. Stamen Design rendering of OpenStreetMap data", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
 												 tileURLTemplate: "http://tile.stamen.com/terrain/{z}/{x}/{y}.png", cacheName: "StamenTerrain", cacheExtension: "png",
 												 tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 18, maximumOverzoomZ: 19)
 
-		let stamenToner = MapSourceDescription(identifier: .stamenToner, name: "Stamen Toner", attribution: "Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL. Stamen Design rendering of OpenStreetMap data", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
+		let stamenToner = MapSourceDescription(name: "Stamen Toner", attribution: "Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL. Stamen Design rendering of OpenStreetMap data", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
 												 tileURLTemplate: "http://tile.stamen.com/toner/{z}/{x}/{y}.png", cacheName: "StamenToner", cacheExtension: "png",
 												 tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 18, maximumOverzoomZ: 19)
 
-		let USGSTopo = MapSourceDescription(identifier: .USGSTopo, name: "USGS Topo", attribution: "USGS", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
+		let USGSTopo = MapSourceDescription(name: "USGS Topo", attribution: "USGS", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
 		                                    tileURLTemplate: "https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}", cacheName: "USGSTopo", cacheExtension: "png",
 		                                    tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 16, maximumOverzoomZ: 19)
 
         // https://b.tile.opentopomap.org/13/1309/2856.png
-        let openTopoMap = MapSourceDescription(identifier: .openTopoMap, name: "OpenTopoMap", attribution: "OpenTopoMap", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
+        let openTopoMap = MapSourceDescription(name: "OpenTopoMap", attribution: "OpenTopoMap", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
                                                  tileURLTemplate: "https://b.tile.opentopomap.org/{z}/{x}/{y}.png", cacheName: "OpenTopoMap", cacheExtension: "png",
                                                  tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 19, maximumOverzoomZ: 19)
         
-		let USGSShadedRelief = MapSourceDescription(identifier: .USGSShadedRelief, name: "USGS Shaded Relief", attribution: "USGS", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
+		let USGSShadedRelief = MapSourceDescription(name: "USGS Shaded Relief", attribution: "USGS", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
 		                                            tileURLTemplate: "https://basemap.nationalmap.gov/arcgis/rest/services/USGSShadedReliefOnly/MapServer/tile/{z}/{y}/{x}", cacheName: "USGSRelief", cacheExtension: "png",
 		                                    tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 16, maximumOverzoomZ: 19)
 
 		// https://basemap.nationalmap.gov/arcgis/rest/services/USGSHydroCached/MapServer/tile/6/22/13
-		let USGSHydro = MapSourceDescription(identifier: .USGSHydroNHD, name: "USGS Hydro NHD", attribution: "USGS National Hydrography Dataset", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
+		let USGSHydro = MapSourceDescription(name: "USGS Hydro NHD", attribution: "USGS National Hydrography Dataset", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
 											 tileURLTemplate: "https://basemap.nationalmap.gov/arcgis/rest/services/USGSHydroCached/MapServer/tile/{z}/{y}/{x}",
 											 cacheName: "USGSHydroNHD", cacheExtension: "png",
 		                                    tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 16, maximumOverzoomZ: 19)
 
-		let USGSImagery = MapSourceDescription(identifier: .USGSImagery, name: "USGS Imagery", attribution: "USGS", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
+		let USGSImagery = MapSourceDescription(name: "USGS Imagery", attribution: "USGS", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
 		                                    tileURLTemplate: "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}", cacheName: "USGSImageryOnly", cacheExtension: "png",
 		                                    tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 16, maximumOverzoomZ: 19)
 
-		let USGSImageryTopo = MapSourceDescription(identifier: .USGSImageryTopo, name: "USGS Topo and Imagery", attribution: "USGS", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
+		let USGSImageryTopo = MapSourceDescription(name: "USGS Topo and Imagery", attribution: "USGS", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
 		                                    tileURLTemplate: "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}", cacheName: "USGSImageryTopo", cacheExtension: "png",
 		                                    tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 16, maximumOverzoomZ: 19)
 
 		// http://tileservice.charts.noaa.gov/tiles/50000_1/8/41/88.png
-		let RNCs = MapSourceDescription(identifier: .NOAARNC, name: "NOAA Raster Nautical Chart", attribution: "NOAA", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
+		let RNCs = MapSourceDescription(name: "NOAA Raster Nautical Chart", attribution: "NOAA", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
 										tileURLTemplate: "https://tileservice.charts.noaa.gov/tiles/50000_1/{z}/{x}/{y}.png", cacheName: "NOAARNC", cacheExtension: "png",
 										tileWidth: 256, tileHeight: 256, isGeometryFlipped: true, minimumZ: 3, maximumServerZ: 16, maximumOverzoomZ: 19)
 
 		// https://maps-for-free.com/layer/relief/z6/row22/6_10-22.jpg
-		let shuttleRadar = MapSourceDescription(identifier: .SRTM, name: "SRTM", attribution: "Shuttle Radar Topography Mission from Maps-for-free.com", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
+		let shuttleRadar = MapSourceDescription(name: "SRTM", attribution: "Shuttle Radar Topography Mission from Maps-for-free.com", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
 												tileURLTemplate: "https://maps-for-free.com/layer/relief/z{z}/row{y}/{z}_{x}-{y}.jpg", cacheName: "shuttleRadar", cacheExtension: "jpg",
 												tileWidth: 256, tileHeight: 256, isGeometryFlipped: true, minimumZ: 3, maximumServerZ: 11, maximumOverzoomZ: 19)
 
 		// super.init(urlTemplate: "http://tiles.openseamap.org/seamark/{z}/{x}/{y}.png")
-		let openSeaMap = MapSourceDescription(identifier: .openSeaMap, name: "Open Sea Map", attribution: "Open Sea Map",
+		let openSeaMap = MapSourceDescription(name: "Open Sea Map", attribution: "Open Sea Map",
 											  isOpaque: false, appleMapType: standardUnderlayMapType, isAppleMap: false,
 											  tileURLTemplate: "https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png", cacheName: "openSeaMap", cacheExtension: "png",
 											  tileWidth: 256, tileHeight: 256, isGeometryFlipped: true, minimumZ: 3, maximumServerZ: 18, maximumOverzoomZ: 19)
 
         // https://c.tiles.openrailwaymap.org/standard/15/5244/11438.png
         // https://www.openrailwaymap.org//legend-generator.php?zoom=14&style=standard&lang=null
-        let openRailMap = MapSourceDescription(identifier: .openRailwayMap, name: "Open Railway Map",
+        let openRailMap = MapSourceDescription(name: "Open Railway Map",
                                                attribution: "Open Railway Map",
                                                isOpaque: false, appleMapType: standardUnderlayMapType, isAppleMap: false,
                                                tileURLTemplate: "https://c.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png", cacheName: "openRailwayMap", cacheExtension: "png",
                                                tileWidth: 512, tileHeight: 512, isGeometryFlipped: true, minimumZ: 3, maximumServerZ: 20, maximumOverzoomZ: 20)
         
         // https://c.tiles.openrailwaymap.org/maxspeed/15/5244/11438.png
-        let openRailMapMaxSpeed = MapSourceDescription(identifier: .openRailwayMapMaxSpeed, name: "Open Railway Map (max speeds)",
+        let openRailMapMaxSpeed = MapSourceDescription(name: "Open Railway Map (max speeds)",
                                                attribution: "Open Railway Map (max speeds)",
                                                isOpaque: false, appleMapType: standardUnderlayMapType, isAppleMap: false,
                                                tileURLTemplate: "https://c.tiles.openrailwaymap.org/maxspeed/{z}/{x}/{y}.png", cacheName: "openRailwayMapMaxSpeeds", cacheExtension: "png",
                                                tileWidth: 512, tileHeight: 512, isGeometryFlipped: true, minimumZ: 3, maximumServerZ: 20, maximumOverzoomZ: 20)
         
         // https://c.tiles.openrailwaymap.org/signals/15/5244/11438.png
-        let openRailMapSignals = MapSourceDescription(identifier: .openRailwayMapSignals, name: "Open Railway Map (signals)",
+        let openRailMapSignals = MapSourceDescription(name: "Open Railway Map (signals)",
                                                attribution: "Open Railway Map (signals)",
                                                isOpaque: false, appleMapType: standardUnderlayMapType, isAppleMap: false,
                                                tileURLTemplate: "https://c.tiles.openrailwaymap.org/signals/{z}/{x}/{y}.png", cacheName: "openRailwayMapSignals", cacheExtension: "png",
@@ -130,28 +130,28 @@ public class MapLibrary {
 		// https://c.tile.thunderforest.com/cycle/6/35/20.png?apikey=a5dd6a2f1c934394bce6b0fb077203eb
         // legend: https://www.opencyclemap.org/docs/
         // API key required: https://www.thunderforest.com/pricing/
-        let openCycleMap = MapSourceDescription(identifier: .openCycleMap, name: "Open Cycle Map",
+        let openCycleMap = MapSourceDescription(name: "Open Cycle Map",
 												attribution: "Open Cycle Map",
 												isOpaque: false, appleMapType: standardUnderlayMapType, isAppleMap: false,
 												tileURLTemplate: "https://tiles.thunderforest.com/cycle/{z}/{x}/{y}.png", cacheName: "openCycleMap", cacheExtension: "png",
 												tileWidth: 256, tileHeight: 256, isGeometryFlipped: true, minimumZ: 3, maximumServerZ: 19, maximumOverzoomZ: 19)
 
         // http://a.tile.openstreetmap.fr/hot/${z}/${x}/${y}.png
-        let hotOSMMap = MapSourceDescription(identifier: .openHikingMap, name: "HOT OSM",
+        let hotOSMMap = MapSourceDescription(name: "HOT OSM",
                                                  attribution: "Humanitarian Open Street Map",
                                                  isOpaque: false, appleMapType: standardUnderlayMapType, isAppleMap: false,
                                                  tileURLTemplate: "https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", cacheName: "HOTOSMMap", cacheExtension: "png",
                                                  tileWidth: 256, tileHeight: 256, isGeometryFlipped: true, minimumZ: 3, maximumServerZ: 19, maximumOverzoomZ: 19)
 
         // https://tile.waymarkedtrails.org/hiking/5/5/11.png
-        let openHikingMap = MapSourceDescription(identifier: .openHikingMap, name: "Open Hiking Map",
+        let openHikingMap = MapSourceDescription(name: "Open Hiking Map",
                                                  attribution: "Open Hiking Map",
                                                  isOpaque: false, appleMapType: standardUnderlayMapType, isAppleMap: false,
                                                  tileURLTemplate: "https://tile.waymarkedtrails.org/hiking/{z}/{x}/{y}.png", cacheName: "openHikingMap", cacheExtension: "png",
                                                  tileWidth: 256, tileHeight: 256, isGeometryFlipped: true, minimumZ: 3, maximumServerZ: 19, maximumOverzoomZ: 19)
         
 // https://esp.usdoj.gov/arcweb/rest/services/World_Ocean_Base/MapServer/tile/0/0/0
-        let worldOceanBase = MapSourceDescription(identifier: .worldOceanBase, name: "World Ocean Base",
+        let worldOceanBase = MapSourceDescription(name: "World Ocean Base",
                                                  attribution: "World Ocean Base",
                                                  isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
                                                  tileURLTemplate: "https://esp.usdoj.gov/arcweb/rest/services/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}", cacheName: "worldOceanBase", cacheExtension: "jpg",
@@ -232,7 +232,8 @@ Ocean:
  https://www.gebco.net
  
  */
-public enum MapSourceIdentifier: Int {
+/*
+ public enum MapSourceIdentifier: Int {
 	case appleStandard = 0
 	case appleHybrid
 	case appleSatellite
@@ -263,9 +264,9 @@ public enum MapSourceIdentifier: Int {
     case openRailwayMapMaxSpeed
     case openRailwayMapSignals
     case worldOceanBase
-
 	// later: Open Sea Map, Railway Map, Terrain Map; Stamen; Mapillary; HOT OSM. USGS.
 }
+ */
 
 // http://basemap.nationalmap.gov/arcgis/rest/services
 //                       https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/15/11580/5738
