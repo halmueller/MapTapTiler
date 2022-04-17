@@ -9,6 +9,7 @@
 import Foundation
 import MapKit
 
+@available(tvOS 11.0, iOS 11.0, macOS 10.13, *)
 public struct MapSourceDescription {
     public init(name: String, attribution: String, isOpaque: Bool, appleMapType: MKMapType, isAppleMap: Bool, tileURLTemplate: String, cacheName: String, cacheExtension: String, tileWidth: Double, tileHeight: Double, isGeometryFlipped: Bool, minimumZ: Int, maximumServerZ: Int, maximumOverzoomZ: Int = 0) {
         self.name = name
