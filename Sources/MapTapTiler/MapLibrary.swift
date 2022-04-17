@@ -11,6 +11,8 @@ import MapKit
 
 let mapStyleKeystring = "mapStyle"
 
+@available(tvOS 11.0, iOS 11.0, macOS 10.13, *)
+/// This class is not needed for the core functionality, but is an example of how you might configure a library of layers.
 public class MapLibrary {
     public let basemapSourceDescriptions: [MapSourceDescription]
     public let overlaySourceDescriptions: [MapSourceDescription]
@@ -39,9 +41,7 @@ public class MapLibrary {
 	}
 
     public static func standardLibrary () -> MapLibrary {
-		let standardUnderlayMapType : MKMapType
-		if #available(iOS 11.0, *) {standardUnderlayMapType = MKMapType.mutedStandard}
-		else {standardUnderlayMapType = MKMapType.standard}
+        let standardUnderlayMapType = MKMapType.mutedStandard
 
 		let appleStandardDef = MapSourceDescription(name: "Apple Standard", attribution: "Apple Maps", isOpaque: true, appleMapType: MKMapType.standard, isAppleMap: true,
                                                     tileURLTemplate: "", cacheName: "", cacheExtension: "", tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 19, maximumOverzoomZ: 19)

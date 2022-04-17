@@ -8,6 +8,7 @@
 
 import MapKit
 
+@available(tvOS 11.0, iOS 11.0, macOS 10.13, *)
 public class ExternalTileOverlay: MKTileOverlay {
     let parentDirectory = "tilecache"
     /// Tiles older than this age should be refreshed from source if possible.
