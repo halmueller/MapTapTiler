@@ -8,7 +8,6 @@
 
 import MapKit
 
-@available(tvOS 11.0, iOS 11.0, macOS 10.13, *)
 public class ExternalTileOverlay: MKTileOverlay {
     let parentDirectory = "tilecache"
     /// Tiles older than this age should be refreshed from source if possible.
@@ -42,8 +41,8 @@ public class ExternalTileOverlay: MKTileOverlay {
 		#if targetEnvironment(simulator)
 		let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
 		let cachesDirectory = paths[0]
-		print("Caches Directory:\nopen ")
-		print(cachesDirectory)
+        debugPrint("Caches Directory:\nopen ")
+		debugPrint(cachesDirectory)
 		#endif
     }
 
@@ -83,7 +82,7 @@ public class ExternalTileOverlay: MKTileOverlay {
         else {
             let request = URLRequest(url: self.url(forTilePath: path))
 			#if targetEnvironment(simulator)
-			print(#function, "fetching", request)
+			debugPrint(#function, "fetching", request)
 			#endif
             let task = urlSession!.dataTask(with: request, completionHandler: { (data, response, error)  in
                 if response != nil {
@@ -95,13 +94,13 @@ public class ExternalTileOverlay: MKTileOverlay {
                             } catch {
                             }
                             if !((try? data!.write(to: URL(fileURLWithPath: tileFilePath), options: [.atomic])) != nil) {
-								print("cache write failure", tileFilePath)
+								debugPrint("cache write failure", tileFilePath)
                             }
                             result(data, error as NSError?)
                         }
 						else {
 							#if targetEnvironment(simulator)
-                            print(#function, httpResponse.statusCode, httpResponse.debugDescription)
+                            debugPrint(#function, httpResponse.statusCode, httpResponse.debugDescription)
 							#endif
 						}
                     }
