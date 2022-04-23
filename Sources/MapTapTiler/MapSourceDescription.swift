@@ -33,10 +33,13 @@ public struct MapSourceDescription {
     public let legendURLString: String? = nil
     public let isOpaque: Bool
 
+    // TODO: switch TimeInterval to use UnitDuration
     /// Tiles older than this age should be refreshed from source if possible.
     public let refreshCacheAge: TimeInterval = 30.0 * 24.0 * 60.0 * 60.0
-    /// Tiles older than this age must not be displayed, even if new tiles are unavailable.
-    public let tooStaleCacheAge: TimeInterval = Double.infinity
+
+    // TODO: Use/honor this value.
+//    /// Tiles older than this age must not be displayed, even if new tiles are unavailable.
+//    public let tooStaleCacheAge: TimeInterval = Double.infinity
 
     /// What Apple map type do we use as the underlay/basemap?
     public let appleMapType: MKMapType
