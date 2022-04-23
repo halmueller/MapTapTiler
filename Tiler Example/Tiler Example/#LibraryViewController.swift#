@@ -1,0 +1,110 @@
+//
+//  ViewController.swift
+//  Tiler Example
+//
+//  Created by Hal Mueller on 4/10/22.
+//
+
+import UIKit
+import MapKit
+import MapTapTiler
+
+class LibraryViewController: UIViewController {
+
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapPicker: UISegmentedControl!
+    
+    let mapChoices: [MapSourceDescription] = {
+        let standardUnderlayMapType = MKMapType.mutedStandard
+                
+        let stamenToner = MapSourceDescription(name: "Stamen Toner", attribution: "Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL. Stamen Design rendering of OpenStreetMap data", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
+                                               tileURLTemplate: "http://tile.stamen.com/toner/{z}/{x}/{y}.png", cacheName: "StamenToner", cacheExtension: "png",
+                                               tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 18, maximumOverzoomZ: 20)
+        
+        let openSeaMap = MapSourceDescription(name: "Open Sea Map", attribution: "Open Sea Map",
+                                              isOpaque: false, appleMapType: MKMapType.satellite, isAppleMap: false,
+                                              tileURLTemplate: "https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png", cacheName: "openSeaMap", cacheExtension: "png",
+                                              tileWidth: 256, tileHeight: 256, isGeometryFlipped: true, minimumZ: 3, maximumServerZ: 18, maximumOverzoomZ: 20)
+        
+        // http://tileservice.charts.noaa.gov/tiles/50000_1/8/41/88.png
+        let RNCs = MapSourceDescription(name: "NOAA Raster Nautical Chart", attribution: "NOAA", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
+                                        tileURLTemplate: "https://tileservice.charts.noaa.gov/tiles/50000_1/{z}/{x}/{y}.png", cacheName: "NOAARNC", cacheExtension: "png",
+                                        tileWidth: 256, tileHeight: 256, isGeometryFlipped: true, minimumZ: 3, maximumServerZ: 16, maximumOverzoomZ: 20)
+        
+        let mapChoices = [
+                          stamenToner,
+                          openSeaMap,
+                          RNCs,
+        ]
+        
+        return mapChoices
+    }()
+    
+    var overlay: ExternalTileOverlay? = nil
+    let USGSImageryTopo = MapSourceDescription(name: "USGS Topo",
+                                               attribution: "USGS",
+                                               isOpaque: true,
+                                               appleMapType: MKMapType.mutedStandard,
+                                               isAppleMap: false,
+                                               tileURLTemplate: "https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}",
+                                               cacheName: "USGSTopo",
+                                               cacheExtension: "png",
+                                               tileWidth: 256,
+                                               tileHeight: 256,
+                                               isGeometryFlipped: false,
+                                               minimumZ: 0,
+                                               maximumServerZ: 16, maximumOverzoomZ: 20)
+    var renderer: MKTileOverlayRenderer?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+//        configureMapOverlay(2)
+        configureSolidBasemap()
+    }
+    
+    func configureSolidBasemap() {
+
+        // no need for these, they won't be visible
+        self.mapView.pointOfInterestFilter = .excludingAll
+        
+        overlay = ExternalTileOverlay(sourceDescription: USGSImageryTopo)
+        renderer = MKTileOverlayRenderer(overlay: overlay!)
+        mapView.addOverlay(overlay!, level: MKOverlayLevel.aboveLabels)
+    }
+    
+    func configureMapOverlay(_ index: Int) {
+        
+        mapView.removeOverlays(mapView.overlays)
+        
+        let mapDescription = mapChoices[index]
+        
+        overlay = ExternalTileOverlay(sourceDescription: mapDescription)
+        renderer = MKTileOverlayRenderer(overlay: overlay!)
+        mapView.addOverlay(overlay!, level: MKOverlayLevel.aboveLabels)
+
+        /*
+         overlay = ExternalTileOverlay(sourceDescription: USGSImageryTopo)
+         solidBasemapTileRenderer = MKTileOverlayRenderer(overlay: overlay!)
+         mapView.addOverlay(overlay!, level: MKOverlayLevel.aboveLabels)
+
+         */
+    }
+
+    @IBAction func pickedMap(_ sender: Any) {
+        // Apple
+        // Stamen
+        // Open Sea Map
+        // NOAA
+    }
+
+}
+
+extension LibraryViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        return renderer!
+    }
+    
+}
+

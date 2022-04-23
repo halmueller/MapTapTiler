@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XM2-pn-1uT">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="yd5-lE-e5Y">
+            <objects>
+                <tabBarController id="XM2-pn-1uT" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ifC-c9-qia">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="oDL-2l-gV7" kind="relationship" relationship="viewControllers" id="eEd-PC-hMX"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="X4a-6J-HI2"/>
+                        <segue destination="Egx-iD-ZUj" kind="relationship" relationship="viewControllers" id="gQo-pX-y10"/>
+                        <segue destination="12F-nK-ojs" kind="relationship" relationship="viewControllers" id="vxQ-Zp-3Gn"/>
+                        <segue destination="3sx-vy-Zm3" kind="relationship" relationship="viewControllers" id="t12-Q8-z1I"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kJJ-6a-bd2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1337" y="47"/>
+        </scene>
+        <!--Partial-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="PartialOverlayViewController" customModule="Tiler_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WBX-Pk-RdE">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="cwV-dE-kfc"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WBX-Pk-RdE" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="9dd-d0-ChB"/>
+                            <constraint firstItem="WBX-Pk-RdE" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="FOw-V0-1tl"/>
+                            <constraint firstItem="WBX-Pk-RdE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZCq-vz-KzB"/>
+                            <constraint firstItem="WBX-Pk-RdE" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="qqQ-oq-L3c"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Partial" id="bIE-33-BrR"/>
+                    <connections>
+                        <outlet property="mapView" destination="WBX-Pk-RdE" id="8PV-mG-reI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708.69565217391312" y="100.44642857142857"/>
+        </scene>
+        <!--Solid-->
+        <scene sceneID="Plr-Jg-IYx">
+            <objects>
+                <viewController id="oDL-2l-gV7" customClass="SolidOverlayViewController" customModule="Tiler_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kCW-Rg-zig">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RLF-hK-LM2">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <connections>
+                                    <outlet property="delegate" destination="oDL-2l-gV7" id="0iC-u3-zth"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="96E-pJ-uue"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RLF-hK-LM2" firstAttribute="trailing" secondItem="kCW-Rg-zig" secondAttribute="trailing" id="XO1-2h-un3"/>
+                            <constraint firstItem="RLF-hK-LM2" firstAttribute="bottom" secondItem="96E-pJ-uue" secondAttribute="bottom" id="g37-wv-k71"/>
+                            <constraint firstItem="RLF-hK-LM2" firstAttribute="leading" secondItem="kCW-Rg-zig" secondAttribute="leading" id="gOp-7q-T0Q"/>
+                            <constraint firstItem="RLF-hK-LM2" firstAttribute="top" secondItem="kCW-Rg-zig" secondAttribute="top" id="gRe-J6-aXA"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Solid" id="mTk-2C-fkc"/>
+                    <connections>
+                        <outlet property="mapView" destination="RLF-hK-LM2" id="LM6-tt-N5Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="doT-DE-pSJ" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708.69565217391312" y="100.44642857142857"/>
+        </scene>
+        <!--Library-->
+        <scene sceneID="ZHQ-uY-XfF">
+            <objects>
+                <viewController id="Egx-iD-ZUj" customClass="LibraryViewController" customModule="Tiler_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yk0-LC-JFp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tRD-b7-f39">
+                                <rect key="frame" x="16" y="774" width="382" height="32"/>
+                                <segments>
+                                    <segment title="Toner Lite"/>
+                                    <segment title="Watercolor"/>
+                                    <segment title="Open Rail"/>
+                                    <segment title="Open Sea"/>
+                                    <segment title="NOAA"/>
+                                </segments>
+                                <connections>
+                                    <action selector="pickedMap:" destination="Egx-iD-ZUj" eventType="valueChanged" id="jdT-7L-oYR"/>
+                                </connections>
+                            </segmentedControl>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lXU-aQ-RmL">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="766"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ANX-ID-qtm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lXU-aQ-RmL" firstAttribute="trailing" secondItem="Yk0-LC-JFp" secondAttribute="trailing" id="6Sg-W4-VHZ"/>
+                            <constraint firstItem="tRD-b7-f39" firstAttribute="centerX" secondItem="Yk0-LC-JFp" secondAttribute="centerX" id="I2e-gw-WjA"/>
+                            <constraint firstItem="lXU-aQ-RmL" firstAttribute="leading" secondItem="Yk0-LC-JFp" secondAttribute="leading" id="JCb-e8-n6N"/>
+                            <constraint firstItem="tRD-b7-f39" firstAttribute="top" secondItem="lXU-aQ-RmL" secondAttribute="bottom" constant="8" symbolic="YES" id="Uqq-bO-AmU"/>
+                            <constraint firstItem="lXU-aQ-RmL" firstAttribute="top" secondItem="Yk0-LC-JFp" secondAttribute="top" id="amh-l3-7IP"/>
+                            <constraint firstItem="ANX-ID-qtm" firstAttribute="bottom" secondItem="tRD-b7-f39" secondAttribute="bottom" constant="8" id="smX-Wy-NbX"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Library" id="wN8-Hl-rce"/>
+                    <connections>
+                        <outlet property="mapPicker" destination="tRD-b7-f39" id="QzT-mz-D6B"/>
+                        <outlet property="mapView" destination="lXU-aQ-RmL" id="fLO-2j-y5d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z1g-M2-NoW" sceneMemberID="firstResponder"/>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="7ad-7a-Hip">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="766"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <outlet property="delegate" destination="Egx-iD-ZUj" id="e9G-pr-1v0"/>
+                    </connections>
+                </mapView>
+            </objects>
+            <point key="canvasLocation" x="708.69565217391312" y="100.44642857142857"/>
+        </scene>
+        <!--Double-->
+        <scene sceneID="tCT-HB-VoN">
+            <objects>
+                <viewController id="12F-nK-ojs" customClass="DoubleOverlayViewController" customModule="Tiler_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NGe-WJ-Lsh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cZF-VG-ybz">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <connections>
+                                    <outlet property="delegate" destination="12F-nK-ojs" id="TTt-zy-oYf"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5HV-S5-acd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cZF-VG-ybz" firstAttribute="leading" secondItem="NGe-WJ-Lsh" secondAttribute="leading" id="9S8-n9-Wec"/>
+                            <constraint firstItem="cZF-VG-ybz" firstAttribute="bottom" secondItem="5HV-S5-acd" secondAttribute="bottom" id="VBs-Z3-n0P"/>
+                            <constraint firstItem="cZF-VG-ybz" firstAttribute="top" secondItem="NGe-WJ-Lsh" secondAttribute="top" id="bLP-5t-oAO"/>
+                            <constraint firstItem="cZF-VG-ybz" firstAttribute="trailing" secondItem="NGe-WJ-Lsh" secondAttribute="trailing" id="ht8-xd-f8N"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Double" id="knX-gt-qNX"/>
+                    <connections>
+                        <outlet property="mapView" destination="cZF-VG-ybz" id="JN8-YT-8xU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VcW-vn-XPW" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708.69565217391312" y="100.44642857142857"/>
+        </scene>
+        <!--Map Warper-->
+        <scene sceneID="E0L-AJ-Ujd">
+            <objects>
+                <viewController id="3sx-vy-Zm3" customClass="MapWarperViewController" customModule="Tiler_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UXs-xG-KoE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CiQ-bR-teN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <connections>
+                                    <outlet property="delegate" destination="3sx-vy-Zm3" id="Mci-Gk-ePR"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WvI-M9-665"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CiQ-bR-teN" firstAttribute="leading" secondItem="UXs-xG-KoE" secondAttribute="leading" id="7yW-uB-Mhb"/>
+                            <constraint firstItem="CiQ-bR-teN" firstAttribute="top" secondItem="UXs-xG-KoE" secondAttribute="top" id="WLI-eD-xLx"/>
+                            <constraint firstItem="CiQ-bR-teN" firstAttribute="bottom" secondItem="WvI-M9-665" secondAttribute="bottom" id="m6X-ZD-AHV"/>
+                            <constraint firstItem="CiQ-bR-teN" firstAttribute="trailing" secondItem="UXs-xG-KoE" secondAttribute="trailing" id="uPH-6V-7Vg"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map Warper" id="8oi-nF-ict"/>
+                    <connections>
+                        <outlet property="mapView" destination="CiQ-bR-teN" id="qFs-jF-SGO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BA2-PB-lEH" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708.69565217391312" y="100.44642857142857"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
