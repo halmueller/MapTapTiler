@@ -1,5 +1,5 @@
 //
-//  SingleOverlayViewController.swift
+//  MapWarperViewController.swift
 //  Tiler Example
 //
 //  Created by Hal Mueller on 4/11/22.
@@ -13,9 +13,9 @@ class MapWarperViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var overlay: ExternalTileOverlay? = nil
-    var solidBasemapTileRenderer: MKTileOverlayRenderer?
-    let USGSImageryTopo = MapSourceDescription(name: "Kroll Seattle",
+    var overlay: ExternalTileOverlay!
+    var renderer: MKTileOverlayRenderer!
+    let mapWarper = MapSourceDescription(name: "Kroll Seattle",
                                                attribution: "MapWarper",
                                                isOpaque: false,
                                                appleMapType: MKMapType.mutedStandard,
@@ -41,21 +41,21 @@ class MapWarperViewController: UIViewController {
     
     func configureSolidBasemap() {
         // have to have _something_
-        self.mapView.mapType = USGSImageryTopo.appleMapType
+        self.mapView.mapType = mapWarper.appleMapType
         
         // no need for these, they won't be visible
         self.mapView.pointOfInterestFilter = .excludingAll
         
-        overlay = ExternalTileOverlay(sourceDescription: USGSImageryTopo)
-        solidBasemapTileRenderer = MKTileOverlayRenderer(overlay: overlay!)
-        mapView.addOverlay(overlay!, level: MKOverlayLevel.aboveLabels)
+        overlay = ExternalTileOverlay(sourceDescription: mapWarper)
+        renderer = MKTileOverlayRenderer(overlay: overlay)
+        mapView.addOverlay(overlay, level: MKOverlayLevel.aboveLabels)
     }
 }
 
 extension MapWarperViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        return solidBasemapTileRenderer!
+        return renderer
     }
 
 }

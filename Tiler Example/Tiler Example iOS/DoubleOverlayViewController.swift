@@ -1,5 +1,5 @@
 //
-//  ScaleSensitiveViewController.swift
+//  DoubleOverlayViewController.swift
 //  Tiler Example
 //
 //  Created by Hal Mueller on 4/11/22.
@@ -13,8 +13,8 @@ class DoubleOverlayViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var railOverlay: ExternalTileOverlay? = nil
-    var stamenTerrainBasemapOverlay: ExternalTileOverlay? = nil
+    var railOverlay: ExternalTileOverlay!
+    var stamenTonerLiteOverlay: ExternalTileOverlay!
 
     let openRailMap = MapSourceDescription(name: "Open Railway Map",
                                                attribution: "Open Railway Map",
@@ -30,8 +30,8 @@ class DoubleOverlayViewController: UIViewController {
     let stamenTonerLite = MapSourceDescription(name: "Stamen Toner Lite", attribution: "Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL. Stamen Design rendering of OpenStreetMap data", isOpaque: true, appleMapType: .satellite, isAppleMap: false,
                                            tileURLTemplate: "http://tile.stamen.com/toner-lite/{z}/{x}/{y}.png", cacheName: "StamenTonerLite", cacheExtension: "png",
                                            tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 18, maximumOverzoomZ: 20)
-    var railOverlayTileRenderer: MKTileOverlayRenderer?
-    var stamenBasemapTileRenderer: MKTileOverlayRenderer?
+    var railOverlayTileRenderer: MKTileOverlayRenderer!
+    var stamenTonerLiteRenderer: MKTileOverlayRenderer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,12 +42,12 @@ class DoubleOverlayViewController: UIViewController {
         // could turn these on, or not
         self.mapView.pointOfInterestFilter = .excludingAll
         
-        stamenTerrainBasemapOverlay = ExternalTileOverlay(sourceDescription: stamenTonerLite)
-        stamenBasemapTileRenderer = MKTileOverlayRenderer(overlay: stamenTerrainBasemapOverlay!)
-        mapView.addOverlay(stamenTerrainBasemapOverlay!, level: MKOverlayLevel.aboveLabels)
+        stamenTonerLiteOverlay = ExternalTileOverlay(sourceDescription: stamenTonerLite)
+        stamenTonerLiteRenderer = MKTileOverlayRenderer(overlay: stamenTonerLiteOverlay!)
+        mapView.addOverlay(stamenTonerLiteOverlay!, level: MKOverlayLevel.aboveLabels)
         
         railOverlay = ExternalTileOverlay(sourceDescription: openRailMap)
-        railOverlayTileRenderer = MKTileOverlayRenderer(overlay: railOverlay!)
+        railOverlayTileRenderer = MKTileOverlayRenderer(overlay: railOverlay)
         mapView.addOverlay(railOverlay!, level: MKOverlayLevel.aboveLabels)
     }
 }
@@ -57,8 +57,8 @@ extension DoubleOverlayViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay === railOverlay {
             return railOverlayTileRenderer!
-        } else if overlay === stamenTerrainBasemapOverlay {
-            return stamenBasemapTileRenderer!
+        } else if overlay === stamenTonerLiteOverlay {
+            return stamenTonerLiteRenderer!
         }
         assert(false, "shouldn't be here")
         return MKOverlayRenderer()

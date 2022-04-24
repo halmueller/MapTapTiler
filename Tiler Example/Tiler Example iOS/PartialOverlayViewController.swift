@@ -1,5 +1,5 @@
 //
-//  ScaleSensitiveViewController.swift
+//  PartialOverlayViewController.swift
 //  Tiler Example
 //
 //  Created by Hal Mueller on 4/11/22.
@@ -13,7 +13,7 @@ class PartialOverlayViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var overlay: ExternalTileOverlay? = nil
+    var overlay: ExternalTileOverlay!
 
     // https://c.tiles.openrailwaymap.org/standard/19/83892/182927.png
     let openRailMap = MapSourceDescription(name: "Open Railway Map",
