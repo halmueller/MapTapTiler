@@ -43,7 +43,7 @@ public class MapLibrary {
     public static func standardLibrary () -> MapLibrary {
         let standardUnderlayMapType = MKMapType.mutedStandard
 
-		let appleStandardDef = MapSourceDescription(name: "Apple Standard", attribution: "Apple Maps", isOpaque: true, appleMapType: MKMapType.standard, isAppleMap: true,
+        let appleStandardDef = MapSourceDescription(name: "Apple Standard", attribution: "Apple Maps", isOpaque: true, appleMapType: MKMapType.standard, isAppleMap: true,
                                                     tileURLTemplate: "", cacheName: "", cacheExtension: "", tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 19, maximumOverzoomZ: 19)
 		let appleSatelliteDef = MapSourceDescription(name: "Apple Satellite", attribution: "Apple Maps", isOpaque: true, appleMapType: MKMapType.satellite, isAppleMap: true,
 		                                             tileURLTemplate: "", cacheName: "", cacheExtension: "", tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 19, maximumOverzoomZ: 19)
@@ -127,7 +127,7 @@ public class MapLibrary {
                                                tileURLTemplate: "https://c.tiles.openrailwaymap.org/signals/{z}/{x}/{y}.png", cacheName: "openRailwayMapSignals", cacheExtension: "png",
                                                tileWidth: 512, tileHeight: 512, isGeometryFlipped: true, minimumZ: 3, maximumServerZ: 20, maximumOverzoomZ: 20)
         
-		// https://c.tile.thunderforest.com/cycle/6/35/20.png?apikey=a5dd6a2f1c934394bce6b0fb077203eb
+        // https://c.tile.thunderforest.com/cycle/6/35/20.png?apikey=a5dd6a2f1c934394bce6b0fb077203eb
         // legend: https://www.opencyclemap.org/docs/
         // API key required: https://www.thunderforest.com/pricing/
         let openCycleMap = MapSourceDescription(name: "Open Cycle Map",
@@ -143,6 +143,7 @@ public class MapLibrary {
                                                  tileURLTemplate: "https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", cacheName: "HOTOSMMap", cacheExtension: "png",
                                                  tileWidth: 256, tileHeight: 256, isGeometryFlipped: true, minimumZ: 3, maximumServerZ: 19, maximumOverzoomZ: 19)
 
+        // https://waymarkedtrails.org
         // https://tile.waymarkedtrails.org/hiking/5/5/11.png
         let openHikingMap = MapSourceDescription(name: "Open Hiking Map",
                                                  attribution: "Open Hiking Map",
@@ -150,7 +151,8 @@ public class MapLibrary {
                                                  tileURLTemplate: "https://tile.waymarkedtrails.org/hiking/{z}/{x}/{y}.png", cacheName: "openHikingMap", cacheExtension: "png",
                                                  tileWidth: 256, tileHeight: 256, isGeometryFlipped: true, minimumZ: 3, maximumServerZ: 19, maximumOverzoomZ: 19)
         
-// https://esp.usdoj.gov/arcweb/rest/services/World_Ocean_Base/MapServer/tile/0/0/0
+        // There are many other layers available at https://esp.usdoj.gov/arcweb/rest/services.
+        // https://esp.usdoj.gov/arcweb/rest/services/World_Ocean_Base/MapServer/tile/0/0/0
         let worldOceanBase = MapSourceDescription(name: "World Ocean Base",
                                                  attribution: "World Ocean Base",
                                                  isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
@@ -158,216 +160,29 @@ public class MapLibrary {
                                                  tileWidth: 256, tileHeight: 256, isGeometryFlipped: true, minimumZ: 1, maximumServerZ: 16, maximumOverzoomZ: 16)
         
         let mapLibrary = MapLibrary(basemapSourceDescriptions: [appleStandardDef,
-																openStreetMap,
-																stamenToner,
+                                                                openStreetMap,
+                                                                stamenToner,
                                                                 openTopoMap,
-																USGSTopo,
-																appleHybridDef,
-																USGSImageryTopo,
-																appleSatelliteDef,
-																USGSImagery,
-																stamenTerrain,
-																shuttleRadar,
+                                                                USGSTopo,
+                                                                appleHybridDef,
+                                                                USGSImageryTopo,
+                                                                appleSatelliteDef,
+                                                                USGSImagery,
+                                                                stamenTerrain,
+                                                                shuttleRadar,
                                                                 USGSShadedRelief,
-																USGSHydro,
-																// Landsat7, Bluemarble, DTED, ETOPO, DNC, ENC, sectionals, WACs, TACs, // NRL, not running as of April 2018
-																RNCs,
-																openSeaMap,
+                                                                USGSHydro,
+                                                                RNCs,
+                                                                openSeaMap,
                                                                 hotOSMMap,
-															//	openHikingMap,
-																openRailMap,
+                                                                //	openHikingMap,
+                                                                openRailMap,
                                                                 openRailMapMaxSpeed,
                                                                 openRailMapSignals,
                                                                 worldOceanBase,
-			])
+                                                               ])
 
 		return mapLibrary
 	}
 }
-
-/* Overzoom mode:
- https://stackoverflow.com/q/4417545/719690
- */
-
-/*
- Other possible tileservers:
- https://geoint.nrlssc.org/tsclient/. Landsat7, Bluemarble, DTED, ETOPO, DNC, ENC, sectionals, WACs, TACs, more.
- 
- https://wiki.openstreetmap.org/wiki/Tile_servers. Long list. Includes multiple cycling/hiking/horse overlays.
- 
- https://directory.spatineo.com/service/691/ entry for NRL SSC. Other sources on this server?
- 
- https://openmaptiles.org/docs/host/tileserver-gl/
- 
- CyclOSM: https://c.tile-cyclosm.openstreetmap.fr (That's what QTH.app uses for cycle layer). See https://www.cyclosm.org/#map=12/52.3728/4.8936/cyclosm. Max zoom is 16, see https://a.tile-cyclosm.openstreetmap.fr/cyclosm/16/10485/22863.png
-     https://a.tile-cyclosm.openstreetmap.fr/cyclosm/13/4204/2690.png
- 
- Stamen watercolor (now worldwide): http://maps.stamen.com/watercolor/#4/37.77/-122.45
- 
- Stamen:
- http://maps.stamen.com/terrain-background/#12/37.7707/-122.3781
- http://maps.stamen.com/terrain-lines/#12/37.7707/-122.3781
- http://maps.stamen.com/terrain-labels/#12/37.7707/-122.3781
- http://maps.stamen.com/terrain/#12/37.7707/-122.3781
- 
- http://maps.stamen.com/toner-lite/#12/37.7707/-122.3781
- http://maps.stamen.com/toner-background/#12/37.7707/-122.3781
- http://maps.stamen.com/toner-lines/#12/37.7707/-122.3781
- http://maps.stamen.com/toner-labels/#12/37.7707/-122.3781
- http://maps.stamen.com/toner-hybrid/#12/37.7707/-122.3781
- http://maps.stamen.com/toner/#12/37.7707/-122.3781
- 
- Weather:
- https://openweathermap.org/api. 'https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=YOUR_APP_ID'
- https://www.aerisweather.com/support/docs/aeris-maps/map-access/map-tiles/
- https://www.weather.gov/gis/WebServices
- https://docs.meteoblue.com/en/weather-apis/maps-api/inventory-api. https://docs.meteoblue.com/en/weather-apis/maps-api/tile-api.
- https://truweathersolutions.com
- 
- Aviation:
- http://vfrmap.com/20211230/tiles/vfrc/11/1335/323.jpg
- http://vfrmap.com/about.html
- 
-Ocean:
- https://www.gebco.net
- 
- */
-/*
- public enum MapSourceIdentifier: Int {
-	case appleStandard = 0
-	case appleHybrid
-	case appleSatellite
-	case openStreetMap
-	case stamenTerrain
-	case stamenToner
-	case USGSTopo
-	case USGSShadedRelief
-	case USGSImagery
-	case USGSImageryTopo
-	case USGSHydroNHD
-	case NRLLandsat7
-	case NRLBluemarble
-	case NRLDTED
-	case NRLDNC
-	case NRLETOPO
-	case NRLENC
-	case NRLFAASectionals
-	case NRLFAATAC
-	case NRLFAAWAC
-	case NOAARNC
-	case SRTM
-	case openSeaMap
-	case openRailwayMap
-	case openCycleMap
-	case openHikingMap
-    case openTopoMap
-    case openRailwayMapMaxSpeed
-    case openRailwayMapSignals
-    case worldOceanBase
-	// later: Open Sea Map, Railway Map, Terrain Map; Stamen; Mapillary; HOT OSM. USGS.
-}
- */
-
-// http://basemap.nationalmap.gov/arcgis/rest/services
-//                       https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/15/11580/5738
-//super.init(urlTemplate: "https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}")
-// http://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer
-//super.init(urlTemplate: "http://basemap.nationalmap.gov/arcgis/rest/services/USGSShadedReliefOnly/MapServer/tile/{z}/{y}/{x}")
-// http://basemap.nationalmap.gov/arcgis/rest/services/USGSShadedReliefOnly/MapServer
-//super.init(urlTemplate: "http://basemap.nationalmap.gov/arcgis/rest/services/USGSHydroNHD/MapServer/tile/{z}/{y}/{x}")
-//super.init(urlTemplate: "http://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}")
-//super.init(urlTemplate: "http://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}")
-//super.init(urlTemplate: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}")
-//super.init(urlTemplate: "https://services.nationalmap.gov/arcgis/rest/services/USGSImageOnlyLarge/MapServer/tile/{z}/{y}/{x}")
-//                       https://services.nationalmap.gov/arcgis/rest/services/USGSImageOnlyLarge/MapServer
-
-// http://isse.cr.usgs.gov/arcgis/rest/services/Orthoimagery/USGS_EROS_Ortho_1Foot/ImageServer/exportImage?f=image&
-// http://www.arcgis.com/home/webmap/viewer.html?url=http%3A%2F%2Fservices.nationalmap.gov%2Farcgis%2Frest%2Fservices%2FUSGSTopoLarge%2FMapServer&source=sd
-
-// see also http://wiki.openstreetmap.org/wiki/USGS_High_Resolution_Orthoimagery#Transparency
-// https://viewer.nationalmap.gov/help/HowTo.htm
-
-/* from the NRL Stennis tile server http://geoint.nrlssc.navy.mil/TileServerClient/
-http://geoint.nrlssc.navy.mil/geospatialData.php
-NAIP, USGS DRG, Landsat, Digital Nautical Charts, Electronic Nautical Charts, Blue Marble, DTED, ETOPO.
-FAA Sectionals, Terminal Area Charts, World Aeronautical Charts
-*/
-
-// http://seamlessrnc.nauticalcharts.noaa.gov/arcgis/services/RNC/NOAA_RNC/ImageServer/WMSServer
-// http://seamlessrnc.nauticalcharts.noaa.gov/arcgis/rest/services/RNC/NOAA_RNC/MapServer
-// http://www.nauticalcharts.noaa.gov/csdl/seamlessraster.html
-
-// Landsat WMS links: http://wiki.openstreetmap.org/wiki/Landsat
-
-/* building the tile address manually: https://blogs.esri.com/esri/arcgis/2008/01/31/deconstructing-the-map-cache-tiling-scheme-part-ii-working-with-map-caches-programmatically/
-Map service tile handler
-
-If the virtual directory is not exposed, you can still request a tile from the web server, but in this case you need to use the map service tile handler. Here’s an example of a URL for a tile retrieved by the map service tile handler:
-
-http://serverx.esri.com/arcgis/services/dgaerials/MapServer?mapName=Layers&format=JPEG&level=0&row=671&column=640
-
-Here is the breakdown of this URL:
-
-http://serverx.esri.com/arcgis/services/dgaerials/MapServer: URL to the map service of the cache
-mapName=Layers: Map name of the cached map service
-format=JPEG: Image type of the cache
-level=0: Level ID
-row=671: Cache tile row in decimal format
-column=640: Cache tile column in decimal format
-*/
-
-/* National Library of Scotland http://maps.nls.uk/projects/api/
-http://nls-3.tileserver.com/nls/11/988/627.jpg
-*/
-
-// http://googlemapsmania.blogspot.com/2016/02/your-source-for-vintage-map-tiles.html
-
-// https://esri.github.io/esri-leaflet/examples/tile-layer-1.html
-
-
-/*		let Landsat7 = MapSourceDescription(identifier: .NRLLandsat7, name: "Landsat 7", attribution: "NRL Stennis", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
-tileURLTemplate: "http://geoint.nrlssc.navy.mil/nrltileserver/openlayers/Landsat7/{z}/{x}/{y}.jpg", cacheName: "Landsat7", cacheExtension: "jpg",
-tileWidth: 512, tileHeight: 512, isGeometryFlipped: true, minimumZ: 0, maximumZ: 19)
-
-//http://geoint.nrlssc.navy.mil/nrltileserver/openlayers/bluemarble/3/1/0.jpg
-let Bluemarble = MapSourceDescription(identifier: .NRLBluemarble, name: "Blue Marble", attribution: "NRL Stennis", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
-tileURLTemplate: "http://geoint.nrlssc.navy.mil/nrltileserver/openlayers/bluemarble/{z}/{x}/{y}.jpg", cacheName: "bluemarble", cacheExtension: "jpg",
-tileWidth: 512, tileHeight: 512, isGeometryFlipped: true, minimumZ: 0, maximumZ: 11)
-
-// http://geoint.nrlssc.navy.mil/nrltileserver/openlayers/DTED0_GRID_COLOR1/3/1/0.jpg http://geoint.nrlssc.navy.mil/nrltileserver/openlayers/DTED0_GRID_COLOR1/13/2047/1023.jpg
-let DTED = MapSourceDescription(identifier: .NRLDTED, name: "DTED", attribution: "NRL Stennis", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
-tileURLTemplate: "http://geoint.nrlssc.navy.mil/nrltileserver/openlayers/DTED0_GRID_COLOR1/{z}/{x}/{y}.jpg", cacheName: "DTED", cacheExtension: "jpg",
-tileWidth: 512, tileHeight: 512, isGeometryFlipped: true, minimumZ: 0, maximumZ: 15)
-
-// http://geoint.nrlssc.navy.mil/nrltileserver/openlayers/ETOPO1_COLOR1/16/5246/3851.jpg
-let ETOPO = MapSourceDescription(identifier: .NRLETOPO, name: "ETOPO", attribution: "NRL Stennis", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
-tileURLTemplate: "http://geoint.nrlssc.navy.mil/nrltileserver/openlayers/ETOPO1_COLOR1/{z}/{x}/{y}.jpg", cacheName: "ETOPO", cacheExtension: "jpg",
-tileWidth: 512, tileHeight: 512, isGeometryFlipped: true, minimumZ: 0, maximumZ: 16)
-
-// http://geoint.nrlssc.navy.mil/dnc/wmts/DNC-WORLD/basemap/DNC-BASEMAP?SERVICE=openlayers&LAYER=DNC-BASEMAP&TILEMATRIX=13&TILEROW=481&TILECOL=655&FORMAT=image%2Fpng
-let  DNC = MapSourceDescription(identifier: .NRLDNC, name: "DNC", attribution: "NRL Stennis", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
-tileURLTemplate: "http://geoint.nrlssc.navy.mil/dnc/wmts/DNC-WORLD/basemap/DNC-BASEMAP?SERVICE=openlayers&LAYER=DNC-BASEMAP&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image%2Fpng", cacheName: "DNC", cacheExtension: "png",
-tileWidth: 512, tileHeight: 512, isGeometryFlipped: true, minimumZ: 0, maximumZ: 15)
-
-// http://geoint.nrlssc.navy.mil/ENCServer/wmts/ENC/basemap/ENC-BASEMAP?SERVICE=openlayers&LAYER=ENC-BASEMAP&TILEMATRIX=11&TILEROW=120&TILECOL=163&FORMAT=image%2Fpng
-let  ENC = MapSourceDescription(identifier: .NRLENC, name: "ENC", attribution: "NRL Stennis", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
-tileURLTemplate: "http://geoint.nrlssc.navy.mil/ENCServer/wmts/ENC/basemap/ENC-BASEMAP?SERVICE=openlayers&LAYER=ENC-BASEMAP&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image%2Fpng", cacheName: "ENC", cacheExtension: "png",
-tileWidth: 512, tileHeight: 512, isGeometryFlipped: true, minimumZ: 0, maximumZ: 15)
-
-
-// http://geoint.nrlssc.navy.mil/nrltileserver/openlayers/FAASectionals/11/163/120.png
-let sectionals = MapSourceDescription(identifier: .NRLFAASectionals, name: "FAA Sectionals", attribution: "NRL Stennis", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
-tileURLTemplate: "http://geoint.nrlssc.navy.mil/nrltileserver/openlayers/FAASectionals/{z}/{x}/{y}.png", cacheName: "FAA Sectionals", cacheExtension: "png",
-tileWidth: 512, tileHeight: 512, isGeometryFlipped: true, minimumZ: 0, maximumZ: 15)
-
-// http://geoint.nrlssc.navy.mil/nrltileserver/openlayers/FAAWorldAeronauticalCharts/10/81/60.png
-let WACs = MapSourceDescription(identifier: .NRLFAAWAC, name: "FAA World Aeronautical Chart", attribution: "NRL Stennis", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
-tileURLTemplate: "http://geoint.nrlssc.navy.mil/nrltileserver/openlayers//{z}/{x}/{y}.jpg", cacheName: "", cacheExtension: "jpg",
-tileWidth: 512, tileHeight: 512, isGeometryFlipped: true, minimumZ: 0, maximumZ: 15)
-
-// http://geoint.nrlssc.navy.mil/nrltileserver/openlayers/FAATerminalAreaChart/10/81/60.png
-let TACs = MapSourceDescription(identifier: .NRLFAATAC, name: "FAA Terminal Area Chart", attribution: "NRL Stennis", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
-tileURLTemplate: "http://geoint.nrlssc.navy.mil/nrltileserver/openlayers//{z}/{x}/{y}.jpg", cacheName: "", cacheExtension: "jpg",
-tileWidth: 512, tileHeight: 512, isGeometryFlipped: true, minimumZ: 0, maximumZ: 15)
-*/
 
