@@ -22,7 +22,7 @@ class LibraryViewController: UIViewController {
         // Note these two use http, not https. App Transport Security exception domain entry required in Info.plist.
         let stamenTonerLite = MapSourceDescription(name: "Stamen Toner Lite", attribution: "Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL. Stamen Design rendering of OpenStreetMap data", isOpaque: true, appleMapType: .satellite, isAppleMap: false,
                                                tileURLTemplate: "http://tile.stamen.com/toner-lite/{z}/{x}/{y}.png", cacheName: "StamenTonerLite", cacheExtension: "png",
-                                               tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 18, maximumOverzoomZ: 20)
+                                               tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 20, maximumOverzoomZ: 20)
         
         let stamenWatercolor = MapSourceDescription(name: "Stamen Watercolor", attribution: "Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL. Stamen Design rendering of OpenStreetMap data", isOpaque: true, appleMapType: .satellite, isAppleMap: false,
                                                tileURLTemplate: "http://tile.stamen.com/watercolor/{z}/{x}/{y}.png", cacheName: "StamenWatercolor", cacheExtension: "png",
@@ -35,7 +35,7 @@ class LibraryViewController: UIViewController {
                                                    isAppleMap: false,
                                                    tileURLTemplate: "https://c.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png", cacheName: "openRailwayMap", cacheExtension: "png",
                                                    tileWidth: 512, tileHeight: 512, isGeometryFlipped: false, minimumZ: 3,
-                                                   maximumServerZ: 16, maximumOverzoomZ: 20)
+                                                   maximumServerZ: 20, maximumOverzoomZ: 20)
 
         let openSeaMap = MapSourceDescription(name: "Open Sea Map", attribution: "Open Sea Map",
                                               isOpaque: false, appleMapType: .satellite, isAppleMap: false,
