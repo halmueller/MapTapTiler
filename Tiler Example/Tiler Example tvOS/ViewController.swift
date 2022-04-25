@@ -23,11 +23,11 @@ class ViewController: UIViewController {
                                            isAppleMap: false,
                                            tileURLTemplate: "https://c.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png", cacheName: "openRailwayMap", cacheExtension: "png",
                                            tileWidth: 512, tileHeight: 512, isGeometryFlipped: false, minimumZ: 3,
-                                           maximumServerZ: 16, maximumOverzoomZ: 20)
+                                           maximumServerZ: 20, maximumOverzoomZ: 20)
     // Note this source uses HTTP, not HTTPS. App Transport Security exception domain entry required.
     let stamenTerrain = MapSourceDescription(name: "Stamen Watercolor", attribution: "Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL. Stamen Design rendering of OpenStreetMap data", isOpaque: true, appleMapType: .satellite, isAppleMap: false,
                                              tileURLTemplate: "http://tile.stamen.com/terrain-background/{z}/{x}/{y}.png", cacheName: "StamenTerrainBackground", cacheExtension: "png",
-                                             tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 18, maximumOverzoomZ: 20)
+                                             tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 20, maximumOverzoomZ: 20)
     var railOverlayTileRenderer: MKTileOverlayRenderer!
     var stamenBasemapTileRenderer: MKTileOverlayRenderer!
     

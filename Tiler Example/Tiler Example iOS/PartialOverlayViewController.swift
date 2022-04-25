@@ -23,7 +23,7 @@ class PartialOverlayViewController: UIViewController {
                                                isAppleMap: false,
                                                tileURLTemplate: "https://c.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png", cacheName: "openRailwayMap", cacheExtension: "png",
                                                tileWidth: 512, tileHeight: 512, isGeometryFlipped: false, minimumZ: 3,
-                                               maximumServerZ: 16, maximumOverzoomZ: 20)
+                                               maximumServerZ: 20, maximumOverzoomZ: 20)
     var solidBasemapTileRenderer: MKTileOverlayRenderer?
     
     override func viewDidLoad() {
