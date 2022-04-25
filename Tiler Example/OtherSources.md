@@ -76,6 +76,8 @@ Ocean:
 }
  */
 
+Lots of servers listed at https://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services?f=html&cacheKey=9794ce4c527468ba
+
 // http://basemap.nationalmap.gov/arcgis/rest/services
 //                       https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/15/11580/5738
 //super.init(urlTemplate: "https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}")
@@ -94,12 +96,6 @@ Ocean:
 
 // see also http://wiki.openstreetmap.org/wiki/USGS_High_Resolution_Orthoimagery#Transparency
 // https://viewer.nationalmap.gov/help/HowTo.htm
-
-/* from the NRL Stennis tile server http://geoint.nrlssc.navy.mil/TileServerClient/
-http://geoint.nrlssc.navy.mil/geospatialData.php
-NAIP, USGS DRG, Landsat, Digital Nautical Charts, Electronic Nautical Charts, Blue Marble, DTED, ETOPO.
-FAA Sectionals, Terminal Area Charts, World Aeronautical Charts
-*/
 
 // http://seamlessrnc.nauticalcharts.noaa.gov/arcgis/services/RNC/NOAA_RNC/ImageServer/WMSServer
 // http://seamlessrnc.nauticalcharts.noaa.gov/arcgis/rest/services/RNC/NOAA_RNC/MapServer
