@@ -1,16 +1,14 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "MapTapTiler",
-        "repositoryURL": "git@github.com:halmueller/MapTapTiler.git",
-        "state": {
-          "branch": "develop",
-          "revision": "1bbed081c3f32430aa384b32062b0d6c42ef2705",
-          "version": null
-        }
+  "pins" : [
+    {
+      "identity" : "maptaptiler",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:halmueller/MapTapTiler.git",
+      "state" : {
+        "branch" : "develop",
+        "revision" : "9527921626a9af473d39f78e1f39101ff3649e0f"
       }
-    ]
-  },
-  "version": 1
+    }
+  ],
+  "version" : 2
 }

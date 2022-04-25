@@ -10,7 +10,22 @@ import Foundation
 import MapKit
 
 public struct MapSourceDescription {
-    public init(name: String, attribution: String, isOpaque: Bool, appleMapType: MKMapType, isAppleMap: Bool, tileURLTemplate: String, cacheName: String, cacheExtension: String, tileWidth: Double, tileHeight: Double, isGeometryFlipped: Bool, minimumZ: Int, maximumServerZ: Int, maximumOverzoomZ: Int = 0) {
+    public init(name: String,
+                attribution: String,
+                isOpaque: Bool,
+                appleMapType: MKMapType,
+                isAppleMap: Bool,
+                tileURLTemplate: String,
+                cacheName: String,
+                cacheExtension: String,
+                tileWidth: Int,
+                tileHeight: Int,
+                isGeometryFlipped: Bool,
+                refreshCacheAge: Measurement<UnitDuration> = Measurement(value: 30 * 24, unit: UnitDuration.hours),
+                tooStaleCacheAge: Measurement<UnitDuration> = Measurement(value: 90 * 24, unit: UnitDuration.hours),
+                minimumZ: Int,
+                maximumServerZ: Int,
+                maximumOverzoomZ: Int = 0) {
         self.name = name
         self.attribution = attribution
         self.isOpaque = isOpaque
@@ -22,6 +37,8 @@ public struct MapSourceDescription {
         self.tileWidth = tileWidth
         self.tileHeight = tileHeight
         self.isGeometryFlipped = isGeometryFlipped
+        self.refreshCacheAgeSeconds = refreshCacheAge.converted(to: .seconds).value
+        self.tooStaleCacheAgeSeconds = tooStaleCacheAge.converted(to: .seconds).value
         self.minimumZ = minimumZ
         self.maximumServerZ = maximumServerZ
         self.maximumOverzoomZ = maximumOverzoomZ
@@ -33,13 +50,13 @@ public struct MapSourceDescription {
     public let legendURLString: String? = nil
     public let isOpaque: Bool
 
-    // TODO: switch TimeInterval to use UnitDuration
     /// Tiles older than this age should be refreshed from source if possible.
-    public let refreshCacheAge: TimeInterval = 30.0 * 24.0 * 60.0 * 60.0
+    public let refreshCacheAgeSeconds: TimeInterval
 
     // TODO: Use/honor this value.
-//    /// Tiles older than this age must not be displayed, even if new tiles are unavailable.
-//    public let tooStaleCacheAge: TimeInterval = Double.infinity
+    /// Tiles older than this age must not be displayed, even if new tiles are unavailable. Not yet implemented. Note that this is not the best way
+    /// to have tiles expire in cases where we know the precise future date of the next map update (for iinstance, aviation charts).
+    public let tooStaleCacheAgeSeconds: TimeInterval
 
     /// What Apple map type do we use as the underlay/basemap?
     public let appleMapType: MKMapType
@@ -49,11 +66,12 @@ public struct MapSourceDescription {
     public let tileURLTemplate: String
     public let cacheName: String
     public let cacheExtension: String
-    public let tileWidth: Double
-    public let tileHeight: Double
+    public let tileWidth: Int
+    public let tileHeight: Int
     public let isGeometryFlipped: Bool
     public let minimumZ: Int
     public let maximumServerZ: Int
+    /// Not yet implemented. Allows for situations where we want to zoom in beyond what the server will deliver, and we don't mind blocky looking supersize pixels.
     public let maximumOverzoomZ: Int
 
     // later add: round-robin tileservers, retina scale

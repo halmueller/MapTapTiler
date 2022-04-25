@@ -11,9 +11,9 @@ import MapKit
 public class ExternalTileOverlay: MKTileOverlay {
     let parentDirectory = "tilecache"
     /// Tiles older than this age should be refreshed from source if possible.
-    public let refreshCacheAge: TimeInterval = 30.0 * 24.0 * 60.0 * 60.0
+    public let refreshCacheAgeSeconds: TimeInterval
     /// Tiles older than this age must not be displayed, even if new tiles are unavailable.
-    public let tooStaleCacheAge: TimeInterval = Double.infinity
+    public let tooStaleCacheAgeSeconds: TimeInterval
     var urlSession: URLSession?
     let cacheName: String
 	let cacheExtension: String
@@ -23,7 +23,9 @@ public class ExternalTileOverlay: MKTileOverlay {
         self.cacheName = sourceDescription.cacheName
 		self.cacheExtension = sourceDescription.cacheExtension
         self.maximumServerZ = sourceDescription.maximumServerZ
-
+        self.refreshCacheAgeSeconds = sourceDescription.refreshCacheAgeSeconds
+        self.tooStaleCacheAgeSeconds = sourceDescription.tooStaleCacheAgeSeconds
+        
         super.init(urlTemplate: sourceDescription.tileURLTemplate)
         self.minimumZ = sourceDescription.minimumZ
         self.maximumZ = sourceDescription.maximumOverzoomZ
@@ -70,7 +72,7 @@ public class ExternalTileOverlay: MKTileOverlay {
         if FileManager.default.fileExists(atPath: tileFilePath) {
             if let fileAttributes = try? FileManager.default.attributesOfItem(atPath: tileFilePath),
                 let fileModificationDate = fileAttributes[FileAttributeKey.modificationDate] as? Date {
-                if fileModificationDate.timeIntervalSinceNow > -1.0 * refreshCacheAge {
+                if fileModificationDate.timeIntervalSinceNow > -1.0 * refreshCacheAgeSeconds {
                     useCachedVersion = true
                 }
             }
