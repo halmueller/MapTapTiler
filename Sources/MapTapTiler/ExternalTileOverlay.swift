@@ -8,7 +8,7 @@
 
 import MapKit
 
-public class ExternalTileOverlay: MKTileOverlay {
+@objc public class ExternalTileOverlay: MKTileOverlay {
     let parentDirectory = "tilecache"
     /// Tiles older than this age should be refreshed from source if possible.
     public let refreshCacheAgeSeconds: TimeInterval
