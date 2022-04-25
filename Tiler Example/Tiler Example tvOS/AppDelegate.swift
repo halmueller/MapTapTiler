@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Tiler Sample tvOS
+//  Tiler Example tvOS
 //
-//  Created by Hal Mueller on 4/14/22.
+//  Created by Hal Mueller on 4/24/22.
 //
 
 import UIKit

@@ -13,24 +13,24 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var railOverlay: ExternalTileOverlay? = nil
-    var stamenTerrainBasemapOverlay: ExternalTileOverlay? = nil
-
+    var railOverlay: ExternalTileOverlay!
+    var stamenTerrainBasemapOverlay: ExternalTileOverlay!
+    
     let openRailMap = MapSourceDescription(name: "Open Railway Map",
-                                               attribution: "Open Railway Map",
-                                               isOpaque: false,
-                                               appleMapType: MKMapType.mutedStandard,
-                                               isAppleMap: false,
-                                               tileURLTemplate: "https://c.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png", cacheName: "openRailwayMap", cacheExtension: "png",
-                                               tileWidth: 512, tileHeight: 512, isGeometryFlipped: false, minimumZ: 3,
-                                               maximumServerZ: 16, maximumOverzoomZ: 20)
+                                           attribution: "Open Railway Map",
+                                           isOpaque: false,
+                                           appleMapType: MKMapType.mutedStandard,
+                                           isAppleMap: false,
+                                           tileURLTemplate: "https://c.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png", cacheName: "openRailwayMap", cacheExtension: "png",
+                                           tileWidth: 512, tileHeight: 512, isGeometryFlipped: false, minimumZ: 3,
+                                           maximumServerZ: 16, maximumOverzoomZ: 20)
     // Note this source uses HTTP, not HTTPS. App Transport Security exception domain entry required.
     let stamenTerrain = MapSourceDescription(name: "Stamen Watercolor", attribution: "Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL. Stamen Design rendering of OpenStreetMap data", isOpaque: true, appleMapType: .satellite, isAppleMap: false,
-                                           tileURLTemplate: "http://tile.stamen.com/terrain-background/{z}/{x}/{y}.png", cacheName: "StamenTerrainBackground", cacheExtension: "png",
-                                           tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 18, maximumOverzoomZ: 20)
-    var railOverlayTileRenderer: MKTileOverlayRenderer?
-    var stamenBasemapTileRenderer: MKTileOverlayRenderer?
-
+                                             tileURLTemplate: "http://tile.stamen.com/terrain-background/{z}/{x}/{y}.png", cacheName: "StamenTerrainBackground", cacheExtension: "png",
+                                             tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 18, maximumOverzoomZ: 20)
+    var railOverlayTileRenderer: MKTileOverlayRenderer!
+    var stamenBasemapTileRenderer: MKTileOverlayRenderer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,12 +41,12 @@ class ViewController: UIViewController {
         self.mapView.pointOfInterestFilter = .excludingAll
         
         stamenTerrainBasemapOverlay = ExternalTileOverlay(sourceDescription: stamenTerrain)
-        stamenBasemapTileRenderer = MKTileOverlayRenderer(overlay: stamenTerrainBasemapOverlay!)
-        mapView.addOverlay(stamenTerrainBasemapOverlay!, level: MKOverlayLevel.aboveLabels)
+        stamenBasemapTileRenderer = MKTileOverlayRenderer(overlay: stamenTerrainBasemapOverlay)
+        mapView.addOverlay(stamenTerrainBasemapOverlay, level: MKOverlayLevel.aboveLabels)
         
         railOverlay = ExternalTileOverlay(sourceDescription: openRailMap)
-        railOverlayTileRenderer = MKTileOverlayRenderer(overlay: railOverlay!)
-        mapView.addOverlay(railOverlay!, level: MKOverlayLevel.aboveLabels)
+        railOverlayTileRenderer = MKTileOverlayRenderer(overlay: railOverlay)
+        mapView.addOverlay(railOverlay, level: MKOverlayLevel.aboveLabels)
     }
 }
 

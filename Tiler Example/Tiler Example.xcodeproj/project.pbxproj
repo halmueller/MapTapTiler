@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B256E9428080EC1006E6354 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B256E9328080EC1006E6354 /* AppDelegate.swift */; };
-		2B256E9628080EC1006E6354 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B256E9528080EC1006E6354 /* ViewController.swift */; };
-		2B256E9928080EC1006E6354 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B256E9728080EC1006E6354 /* Main.storyboard */; };
-		2B256E9B28080EC2006E6354 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B256E9A28080EC2006E6354 /* Assets.xcassets */; };
-		2B256E9E28080EC2006E6354 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B256E9C28080EC2006E6354 /* LaunchScreen.storyboard */; };
-		2B256EA32808137D006E6354 /* MapTapTiler in Frameworks */ = {isa = PBXBuildFile; productRef = 2B256EA22808137D006E6354 /* MapTapTiler */; };
 		2B5060822816125D0017BCEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5060812816125D0017BCEC /* AppDelegate.swift */; };
 		2B5060842816125D0017BCEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5060832816125D0017BCEC /* ViewController.swift */; };
 		2B506086281612610017BCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B506085281612610017BCEC /* Assets.xcassets */; };
 		2B506089281612610017BCEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B506087281612610017BCEC /* Main.storyboard */; };
 		2B50608F281613BB0017BCEC /* MapTapTiler in Frameworks */ = {isa = PBXBuildFile; productRef = 2B50608E281613BB0017BCEC /* MapTapTiler */; };
+		2B506097281626020017BCEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B506096281626020017BCEC /* AppDelegate.swift */; };
+		2B506099281626020017BCEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B506098281626020017BCEC /* ViewController.swift */; };
+		2B50609C281626020017BCEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B50609A281626020017BCEC /* Main.storyboard */; };
+		2B50609E281626080017BCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B50609D281626080017BCEC /* Assets.xcassets */; };
+		2B5060A1281626080017BCEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B50609F281626080017BCEC /* LaunchScreen.storyboard */; };
+		2B5060A6281626200017BCEC /* MapTapTiler in Frameworks */ = {isa = PBXBuildFile; productRef = 2B5060A5281626200017BCEC /* MapTapTiler */; };
 		2B57CD6B2807F3A100DD7F1A /* DoubleOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57CD6A2807F3A100DD7F1A /* DoubleOverlayViewController.swift */; };
 		2BCBEAB22810FEF000097D75 /* MapWarperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCBEAB12810FEF000097D75 /* MapWarperViewController.swift */; };
 		2BDE3C5D2804041D001B54A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDE3C5C2804041D001B54A5 /* AppDelegate.swift */; };
@@ -32,12 +32,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2B256E9128080EC1006E6354 /* Tiler Example tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tiler Example tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B256E9328080EC1006E6354 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2B256E9528080EC1006E6354 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2B256E9828080EC1006E6354 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2B256E9A28080EC2006E6354 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2B256E9D28080EC2006E6354 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B506079281611C70017BCEC /* MapLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLibrary.swift; sourceTree = "<group>"; };
 		2B50607A281611DB0017BCEC /* OtherSources.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = OtherSources.md; sourceTree = "<group>"; };
 		2B50607F2816125D0017BCEC /* Tiler Example macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tiler Example macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +40,13 @@
 		2B506085281612610017BCEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B506088281612610017BCEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B50608A281612610017BCEC /* Tiler_Example_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tiler_Example_macOS.entitlements; sourceTree = "<group>"; };
+		2B506094281626020017BCEC /* Tiler Example tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tiler Example tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B506096281626020017BCEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2B506098281626020017BCEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2B50609B281626020017BCEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2B50609D281626080017BCEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2B5060A0281626080017BCEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2B5060A82816288B0017BCEC /* Tiler-Example-tvOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Tiler-Example-tvOS-Info.plist"; sourceTree = "<group>"; };
 		2B57CD6A2807F3A100DD7F1A /* DoubleOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleOverlayViewController.swift; sourceTree = "<group>"; };
 		2BCBEAB12810FEF000097D75 /* MapWarperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapWarperViewController.swift; sourceTree = "<group>"; };
 		2BDE3C592804041D001B54A5 /* Tiler Example iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tiler Example iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,19 +62,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2B256E8E28080EC1006E6354 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2B256EA32808137D006E6354 /* MapTapTiler in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2B50607C2816125C0017BCEC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2B50608F281613BB0017BCEC /* MapTapTiler in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B506091281626020017BCEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B5060A6281626200017BCEC /* MapTapTiler in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,18 +89,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2B256E9228080EC1006E6354 /* Tiler Example tvOS */ = {
-			isa = PBXGroup;
-			children = (
-				2B256E9328080EC1006E6354 /* AppDelegate.swift */,
-				2B256E9528080EC1006E6354 /* ViewController.swift */,
-				2B256E9728080EC1006E6354 /* Main.storyboard */,
-				2B256E9A28080EC2006E6354 /* Assets.xcassets */,
-				2B256E9C28080EC2006E6354 /* LaunchScreen.storyboard */,
-			);
-			path = "Tiler Example tvOS";
-			sourceTree = "<group>";
-		};
 		2B5060802816125D0017BCEC /* Tiler Example macOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,14 +101,27 @@
 			path = "Tiler Example macOS";
 			sourceTree = "<group>";
 		};
+		2B506095281626020017BCEC /* Tiler Example tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				2B506096281626020017BCEC /* AppDelegate.swift */,
+				2B5060A82816288B0017BCEC /* Tiler-Example-tvOS-Info.plist */,
+				2B506098281626020017BCEC /* ViewController.swift */,
+				2B50609A281626020017BCEC /* Main.storyboard */,
+				2B50609D281626080017BCEC /* Assets.xcassets */,
+				2B50609F281626080017BCEC /* LaunchScreen.storyboard */,
+			);
+			path = "Tiler Example tvOS";
+			sourceTree = "<group>";
+		};
 		2BDE3C502804041D001B54A5 = {
 			isa = PBXGroup;
 			children = (
 				2B50607A281611DB0017BCEC /* OtherSources.md */,
 				2B506079281611C70017BCEC /* MapLibrary.swift */,
 				2BDE3C5B2804041D001B54A5 /* Tiler Example iOS */,
-				2B256E9228080EC1006E6354 /* Tiler Example tvOS */,
 				2B5060802816125D0017BCEC /* Tiler Example macOS */,
+				2B506095281626020017BCEC /* Tiler Example tvOS */,
 				2BDE3C5A2804041D001B54A5 /* Products */,
 				2BDE3C7328040486001B54A5 /* Frameworks */,
 			);
@@ -129,8 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				2BDE3C592804041D001B54A5 /* Tiler Example iOS.app */,
-				2B256E9128080EC1006E6354 /* Tiler Example tvOS.app */,
 				2B50607F2816125D0017BCEC /* Tiler Example macOS.app */,
+				2B506094281626020017BCEC /* Tiler Example tvOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,26 +165,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2B256E9028080EC1006E6354 /* Tiler Example tvOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2B256EA128080EC2006E6354 /* Build configuration list for PBXNativeTarget "Tiler Example tvOS" */;
-			buildPhases = (
-				2B256E8D28080EC1006E6354 /* Sources */,
-				2B256E8E28080EC1006E6354 /* Frameworks */,
-				2B256E8F28080EC1006E6354 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Tiler Example tvOS";
-			packageProductDependencies = (
-				2B256EA22808137D006E6354 /* MapTapTiler */,
-			);
-			productName = "Tiler Sample tvOS";
-			productReference = 2B256E9128080EC1006E6354 /* Tiler Example tvOS.app */;
-			productType = "com.apple.product-type.application";
-		};
 		2B50607E2816125C0017BCEC /* Tiler Example macOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2B50608B281612610017BCEC /* Build configuration list for PBXNativeTarget "Tiler Example macOS" */;
@@ -201,6 +183,26 @@
 			);
 			productName = "Tiler Example macOS";
 			productReference = 2B50607F2816125D0017BCEC /* Tiler Example macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2B506093281626020017BCEC /* Tiler Example tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B5060A2281626080017BCEC /* Build configuration list for PBXNativeTarget "Tiler Example tvOS" */;
+			buildPhases = (
+				2B506090281626020017BCEC /* Sources */,
+				2B506091281626020017BCEC /* Frameworks */,
+				2B506092281626020017BCEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Tiler Example tvOS";
+			packageProductDependencies = (
+				2B5060A5281626200017BCEC /* MapTapTiler */,
+			);
+			productName = "Tiler Example tvOS";
+			productReference = 2B506094281626020017BCEC /* Tiler Example tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2BDE3C582804041D001B54A5 /* Tiler Example iOS */ = {
@@ -233,10 +235,10 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
-					2B256E9028080EC1006E6354 = {
-						CreatedOnToolsVersion = 13.3.1;
-					};
 					2B50607E2816125C0017BCEC = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					2B506093281626020017BCEC = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 					2BDE3C582804041D001B54A5 = {
@@ -261,29 +263,29 @@
 			projectRoot = "";
 			targets = (
 				2BDE3C582804041D001B54A5 /* Tiler Example iOS */,
-				2B256E9028080EC1006E6354 /* Tiler Example tvOS */,
 				2B50607E2816125C0017BCEC /* Tiler Example macOS */,
+				2B506093281626020017BCEC /* Tiler Example tvOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2B256E8F28080EC1006E6354 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2B256E9E28080EC2006E6354 /* LaunchScreen.storyboard in Resources */,
-				2B256E9B28080EC2006E6354 /* Assets.xcassets in Resources */,
-				2B256E9928080EC1006E6354 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2B50607D2816125C0017BCEC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2B506086281612610017BCEC /* Assets.xcassets in Resources */,
 				2B506089281612610017BCEC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B506092281626020017BCEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B5060A1281626080017BCEC /* LaunchScreen.storyboard in Resources */,
+				2B50609E281626080017BCEC /* Assets.xcassets in Resources */,
+				2B50609C281626020017BCEC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,21 +302,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2B256E8D28080EC1006E6354 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2B256E9628080EC1006E6354 /* ViewController.swift in Sources */,
-				2B256E9428080EC1006E6354 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2B50607B2816125C0017BCEC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2B5060842816125D0017BCEC /* ViewController.swift in Sources */,
 				2B5060822816125D0017BCEC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B506090281626020017BCEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B506099281626020017BCEC /* ViewController.swift in Sources */,
+				2B506097281626020017BCEC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,28 +337,28 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2B256E9728080EC1006E6354 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2B256E9828080EC1006E6354 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		2B256E9C28080EC2006E6354 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2B256E9D28080EC2006E6354 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		2B506087281612610017BCEC /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2B506088281612610017BCEC /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2B50609A281626020017BCEC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B50609B281626020017BCEC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2B50609F281626080017BCEC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B5060A0281626080017BCEC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		2BDE3C622804041D001B54A5 /* Main.storyboard */ = {
@@ -378,60 +380,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		2B256E9F28080EC2006E6354 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TW8SJXYFP5;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Tiler-Sample-tvOS-Info.plist";
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mobilegeographics.Tiler-Example-tvOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-			};
-			name = Debug;
-		};
-		2B256EA028080EC2006E6354 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TW8SJXYFP5;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Tiler-Sample-tvOS-Info.plist";
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mobilegeographics.Tiler-Example-tvOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-			};
-			name = Release;
-		};
 		2B50608C281612610017BCEC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -488,6 +436,62 @@
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		2B5060A3281626080017BCEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Tiler Example tvOS/Tiler-Example-tvOS-Info.plist";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mobilegeographics.Tiler-Example-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 15.2;
+			};
+			name = Debug;
+		};
+		2B5060A4281626080017BCEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Tiler Example tvOS/Tiler-Example-tvOS-Info.plist";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mobilegeographics.Tiler-Example-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 15.2;
 			};
 			name = Release;
 		};
@@ -668,20 +672,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2B256EA128080EC2006E6354 /* Build configuration list for PBXNativeTarget "Tiler Example tvOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2B256E9F28080EC2006E6354 /* Debug */,
-				2B256EA028080EC2006E6354 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2B50608B281612610017BCEC /* Build configuration list for PBXNativeTarget "Tiler Example macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2B50608C281612610017BCEC /* Debug */,
 				2B50608D281612610017BCEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2B5060A2281626080017BCEC /* Build configuration list for PBXNativeTarget "Tiler Example tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B5060A3281626080017BCEC /* Debug */,
+				2B5060A4281626080017BCEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -718,12 +722,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2B256EA22808137D006E6354 /* MapTapTiler */ = {
+		2B50608E281613BB0017BCEC /* MapTapTiler */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2BFD846E280547D90005FA02 /* XCRemoteSwiftPackageReference "MapTapTiler" */;
 			productName = MapTapTiler;
 		};
-		2B50608E281613BB0017BCEC /* MapTapTiler */ = {
+		2B5060A5281626200017BCEC /* MapTapTiler */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2BFD846E280547D90005FA02 /* XCRemoteSwiftPackageReference "MapTapTiler" */;
 			productName = MapTapTiler;
