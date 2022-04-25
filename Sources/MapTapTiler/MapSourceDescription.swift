@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-@objc public struct MapSourceDescription {
+@objc public class MapSourceDescription {
     public init(name: String,
                 attribution: String,
                 isOpaque: Bool,
