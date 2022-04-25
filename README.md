@@ -10,10 +10,10 @@ tile format. I've included examples from USGS (topos and DOQs), two Open Street 
 projects (Open Rail Map and Open Sea Map), 
 several samples from [Stamen Design](http://maps.stamen.com/#watercolor/12/37.7706/-122.3782) 
 (beautiful custom renders of OSM data), 
-NOAA (raster nautical charts), GEBCO world
-ocean bathymetry, and MapWarper (which can rectify and then server any historical map you upload).
+NOAA (raster nautical charts), [GEBCO world
+ocean bathymetry](https://www.gebco.net), and [MapWarper](https://mapwarper.net) (which can rectify and then server any historical map you upload).
 
-OtherSources.md [OtherSources.md](./Tiler Example/OtherSources.md) has dozens more sources that I haven't verified lately.
+[OtherSources.md](Tiler\ Example/OtherSources.md) has dozens more sources that I haven't verified lately.
 
 See any of the view controllers in the three sample apps to get started. The gist of it is:
 
