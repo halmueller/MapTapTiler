@@ -15,15 +15,17 @@ class MapWarperViewController: UIViewController {
     
     var overlay: ExternalTileOverlay!
     var renderer: MKTileOverlayRenderer!
-    let mapWarper = MapSourceDescription(name: "Kroll Seattle",
+    
+    // Here are a couple of other cool MapWarper maps:
+    // tileURLTemplate: "https://mapwarper.net/maps/tile/34115/{z}/{x}/{y}"
+    // cacheName: "MapWarperKrollSeattle"
+    // tileURLTemplate: "https://mapwarper.net/maps/tile/61967/{z}/{x}/{y}"
+    // cacheName: "MapWarperErieCanalRomeNY"
+    let mapWarper = MapSourceDescription(name: "Amerine PNW 1891",
                                                attribution: "MapWarper",
                                                isOpaque: false,
                                                appleMapType: MKMapType.mutedStandard,
                                                isAppleMap: false,
-//                                               tileURLTemplate: "https://mapwarper.net/maps/tile/34115/{z}/{x}/{y}",
-//                                               cacheName: "MapWarperKrollSeattle",
-//                                               tileURLTemplate: "https://mapwarper.net/maps/tile/61967/{z}/{x}/{y}",
-//                                               cacheName: "MapWarperErieCanalRomeNY",
                                                tileURLTemplate: "https://mapwarper.net/maps/tile/62331/{z}/{x}/{y}",
                                                cacheName: "MapWarperID_MT_OR_WA_1891",
                                                cacheExtension: "png",
