@@ -19,7 +19,7 @@ import MapKit
 	let cacheExtension: String
     let maximumServerZ: Int
 
-    public init(sourceDescription: MapSourceDescription) {
+    @objc public init(sourceDescription: MapSourceDescription) {
         self.cacheName = sourceDescription.cacheName
 		self.cacheExtension = sourceDescription.cacheExtension
         self.maximumServerZ = sourceDescription.maximumServerZ
@@ -57,7 +57,7 @@ import MapKit
 //		return super.url(forTilePath: path)
 //	}
 
-    public override func loadTile(at path: MKTileOverlayPath, result: @escaping (Data?, Error?) -> Void) {
+    @objc public override func loadTile(at path: MKTileOverlayPath, result: @escaping (Data?, Error?) -> Void) {
 
         let overzoomMode = path.z > maximumServerZ
         if overzoomMode {
