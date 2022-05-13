@@ -26,8 +26,7 @@ let package = Package(
         .target(
             name: "MapTapTiler",
             dependencies: [],
-            publicHeadersPath: "include"
-        ),
+            sources: ["MapSourceDescription.swift", "ExternalTileOverlay.swift"]),
         .testTarget(
             name: "MapTapTilerTests",
             dependencies: ["MapTapTiler"]),
