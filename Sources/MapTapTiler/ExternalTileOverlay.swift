@@ -14,31 +14,35 @@ import MapKit
     public let refreshCacheAgeSeconds: TimeInterval
     /// Tiles older than this age must not be displayed, even if new tiles are unavailable.
     public let tooStaleCacheAgeSeconds: TimeInterval
-    var urlSession: URLSession?
+    let urlSession: URLSession
     let cacheName: String
 	let cacheExtension: String
     let maximumServerZ: Int
 
-    @objc public init(sourceDescription: MapSourceDescription) {
-        self.cacheName = sourceDescription.cacheName
-		self.cacheExtension = sourceDescription.cacheExtension
-        self.maximumServerZ = sourceDescription.maximumServerZ
-        self.refreshCacheAgeSeconds = sourceDescription.refreshCacheAgeSeconds
-        self.tooStaleCacheAgeSeconds = sourceDescription.tooStaleCacheAgeSeconds
-        
-        super.init(urlTemplate: sourceDescription.tileURLTemplate)
-        self.minimumZ = sourceDescription.minimumZ
-        self.maximumZ = sourceDescription.maximumOverzoomZ
-        self.canReplaceMapContent = sourceDescription.isOpaque
-		self.tileSize = CGSize(width: sourceDescription.tileWidth, height: sourceDescription.tileHeight)
-
+    @objc public convenience init(sourceDescription: MapSourceDescription) {
         // The Open Sea Map tile server returns 404 for blank tiles, and also when it's
         // too heavily loaded to return a tile. Maybe some other sources do too? We'll
         // do our own cacheing and not use NSURLSession's.
         let sessionConfiguration = URLSessionConfiguration.default
         sessionConfiguration.urlCache = nil
         sessionConfiguration.requestCachePolicy = .reloadIgnoringLocalCacheData
+        self.init(sourceDescription: sourceDescription, sessionConfiguration: sessionConfiguration)
+    }
+
+    /// Lets tests supply a session configuration with a stubbed network.
+    init(sourceDescription: MapSourceDescription, sessionConfiguration: URLSessionConfiguration) {
+        self.cacheName = sourceDescription.cacheName
+		self.cacheExtension = sourceDescription.cacheExtension
+        self.maximumServerZ = sourceDescription.maximumServerZ
+        self.refreshCacheAgeSeconds = sourceDescription.refreshCacheAgeSeconds
+        self.tooStaleCacheAgeSeconds = sourceDescription.tooStaleCacheAgeSeconds
         self.urlSession = URLSession(configuration: sessionConfiguration)
+
+        super.init(urlTemplate: sourceDescription.tileURLTemplate)
+        self.minimumZ = sourceDescription.minimumZ
+        self.maximumZ = sourceDescription.maximumOverzoomZ
+        self.canReplaceMapContent = sourceDescription.isOpaque
+		self.tileSize = CGSize(width: sourceDescription.tileWidth, height: sourceDescription.tileHeight)
 
 		#if targetEnvironment(simulator)
 		let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
@@ -46,6 +50,10 @@ import MapKit
         debugPrint("Caches Directory:\nopen ")
 		debugPrint(cachesDirectory)
 		#endif
+    }
+
+    deinit {
+        urlSession.finishTasksAndInvalidate()
     }
 
 //    public override func url(forTilePath path: MKTileOverlayPath) -> URL {
@@ -57,59 +65,61 @@ import MapKit
 //		return super.url(forTilePath: path)
 //	}
 
+    /// Returns a cached tile if it's fresh, otherwise fetches it from the server.
+    ///
+    /// `result` is always called exactly once. MapKit waits on a tile until it is, so a missed
+    /// callback leaves the tile loading forever and can stall the tiles queued behind it.
     @objc public override func loadTile(at path: MKTileOverlayPath, result: @escaping (Data?, Error?) -> Void) {
-
-        let overzoomMode = path.z > maximumServerZ
-        if overzoomMode {
-            // we're in overzoom mode
-            let overzoom = path.z - maximumServerZ
-        }
-
         let parentXFolderURL = URLForTilecacheFolder().appendingPathComponent(self.cacheXFolderNameForPath(path))
-        let tileFilePathURL = parentXFolderURL.appendingPathComponent(fileNameForTile(path))
-        let tileFilePath = tileFilePathURL.path
-        var useCachedVersion = false
-        if FileManager.default.fileExists(atPath: tileFilePath) {
-            if let fileAttributes = try? FileManager.default.attributesOfItem(atPath: tileFilePath),
-                let fileModificationDate = fileAttributes[FileAttributeKey.modificationDate] as? Date {
-                if fileModificationDate.timeIntervalSinceNow > -1.0 * refreshCacheAgeSeconds {
-                    useCachedVersion = true
+        let tileFileURL = parentXFolderURL.appendingPathComponent(fileNameForTile(path))
+        let cachedTile = self.cachedTile(at: tileFileURL)
+
+        if let cachedTile = cachedTile, cachedTile.age < refreshCacheAgeSeconds {
+            result(cachedTile.data, nil)
+            return
+        }
+
+        let request = URLRequest(url: self.url(forTilePath: path))
+		#if targetEnvironment(simulator)
+		debugPrint(#function, "fetching", request)
+		#endif
+        let task = urlSession.dataTask(with: request) { [tooStaleCacheAgeSeconds] data, response, error in
+            let statusCode = (response as? HTTPURLResponse)?.statusCode
+            if statusCode == 200, let data = data {
+                try? FileManager.default.createDirectory(at: parentXFolderURL, withIntermediateDirectories: true, attributes: nil)
+                if (try? data.write(to: tileFileURL, options: [.atomic])) == nil {
+                    debugPrint("cache write failure", tileFileURL.path)
                 }
+                result(data, nil)
+                return
             }
-        }
-        if (useCachedVersion) {
-            let cachedData = try? Data(contentsOf: URL(fileURLWithPath: tileFilePath))
-            result(cachedData, nil)
-        }
-        else {
-            let request = URLRequest(url: self.url(forTilePath: path))
+
+            // The fetch failed. An older cached tile is better than nothing, unless it's too stale to show.
+            if let cachedTile = cachedTile, cachedTile.age < tooStaleCacheAgeSeconds {
+                result(cachedTile.data, nil)
+                return
+            }
+            if statusCode == 404 {
+                // No tile here. For Open Sea Map, that's an area with no sea marks: draw nothing.
+                result(nil, nil)
+                return
+            }
 			#if targetEnvironment(simulator)
-			debugPrint(#function, "fetching", request)
+            debugPrint(#function, statusCode ?? 0, error?.localizedDescription ?? "no response")
 			#endif
-            let task = urlSession!.dataTask(with: request, completionHandler: { (data, response, error)  in
-                if response != nil {
-                    if let httpResponse = response as? HTTPURLResponse {
-                        if httpResponse.statusCode == 200 {
-                            do {
-                                try FileManager.default.createDirectory(at: parentXFolderURL,
-                                                                        withIntermediateDirectories: true, attributes: nil)
-                            } catch {
-                            }
-                            if !((try? data!.write(to: URL(fileURLWithPath: tileFilePath), options: [.atomic])) != nil) {
-								debugPrint("cache write failure", tileFilePath)
-                            }
-                            result(data, error as NSError?)
-                        }
-						else {
-							#if targetEnvironment(simulator)
-                            debugPrint(#function, httpResponse.statusCode, httpResponse.debugDescription)
-							#endif
-						}
-                    }
-                }
-            })
-            task.resume()
+            result(nil, error ?? URLError(.badServerResponse))
         }
+        task.resume()
+    }
+
+    /// The cached tile at `fileURL` and how many seconds old it is, or nil if there isn't one.
+    fileprivate func cachedTile(at fileURL: URL) -> (data: Data, age: TimeInterval)? {
+        guard let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path),
+              let modificationDate = attributes[FileAttributeKey.modificationDate] as? Date,
+              let data = try? Data(contentsOf: fileURL) else {
+            return nil
+        }
+        return (data, -modificationDate.timeIntervalSinceNow)
     }
 
     // filename for y.png/y.jpg, used within the cacheXFolderNameForPath
