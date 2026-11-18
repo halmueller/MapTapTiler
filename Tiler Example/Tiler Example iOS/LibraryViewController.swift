@@ -41,18 +41,12 @@ class LibraryViewController: UIViewController {
                                               isOpaque: false, appleMapType: .satellite, isAppleMap: false,
                                               tileURLTemplate: "https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png", cacheName: "openSeaMap", cacheExtension: "png",
                                               tileWidth: 256, tileHeight: 256, isGeometryFlipped: true, minimumZ: 3, maximumServerZ: 18, maximumOverzoomZ: 20)
-        
-        // https://tileservice.charts.noaa.gov/tiles/50000_1/8/41/88.png
-        let RNCs = MapSourceDescription(name: "NOAA Raster Nautical Chart", attribution: "NOAA", isOpaque: true, appleMapType: .satellite, isAppleMap: false,
-                                        tileURLTemplate: "https://tileservice.charts.noaa.gov/tiles/50000_1/{z}/{x}/{y}.png", cacheName: "NOAARNC", cacheExtension: "png",
-                                        tileWidth: 256, tileHeight: 256, isGeometryFlipped: true, minimumZ: 3, maximumServerZ: 16, maximumOverzoomZ: 20)
-        
+                
         let mapChoices = [
                           stamenTonerLite,
                           stamenWatercolor,
                           openRailMap,
                           openSeaMap,
-                          RNCs,
         ]
         
         return mapChoices

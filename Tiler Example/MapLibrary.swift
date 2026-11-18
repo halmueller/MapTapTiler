@@ -89,11 +89,6 @@ public class MapLibrary {
 		                                    tileURLTemplate: "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}", cacheName: "USGSImageryTopo", cacheExtension: "png",
 		                                    tileWidth: 256, tileHeight: 256, isGeometryFlipped: false, minimumZ: 0, maximumServerZ: 16, maximumOverzoomZ: 19)
 
-		// http://tileservice.charts.noaa.gov/tiles/50000_1/8/41/88.png
-		let RNCs = MapSourceDescription(name: "NOAA Raster Nautical Chart", attribution: "NOAA", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
-										tileURLTemplate: "https://tileservice.charts.noaa.gov/tiles/50000_1/{z}/{x}/{y}.png", cacheName: "NOAARNC", cacheExtension: "png",
-										tileWidth: 256, tileHeight: 256, isGeometryFlipped: true, minimumZ: 3, maximumServerZ: 16, maximumOverzoomZ: 19)
-
 		// https://maps-for-free.com/layer/relief/z6/row22/6_10-22.jpg
 		let shuttleRadar = MapSourceDescription(name: "SRTM", attribution: "Shuttle Radar Topography Mission from Maps-for-free.com", isOpaque: true, appleMapType: standardUnderlayMapType, isAppleMap: false,
 												tileURLTemplate: "https://maps-for-free.com/layer/relief/z{z}/row{y}/{z}_{x}-{y}.jpg", cacheName: "shuttleRadar", cacheExtension: "jpg",

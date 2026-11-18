@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XM2-pn-1uT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21179.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XM2-pn-1uT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21169.4"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,7 +33,7 @@
         <!--Partial-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PartialOverlayViewController" customModule="Tiler_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PartialOverlayViewController" customModule="Tiler_Example_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,7 +66,7 @@
         <!--Solid-->
         <scene sceneID="Plr-Jg-IYx">
             <objects>
-                <viewController id="oDL-2l-gV7" customClass="SolidOverlayViewController" customModule="Tiler_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="oDL-2l-gV7" customClass="SolidOverlayViewController" customModule="Tiler_Example_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kCW-Rg-zig">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,19 +99,18 @@
         <!--Library-->
         <scene sceneID="ZHQ-uY-XfF">
             <objects>
-                <viewController id="Egx-iD-ZUj" customClass="LibraryViewController" customModule="Tiler_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Egx-iD-ZUj" customClass="LibraryViewController" customModule="Tiler_Example_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yk0-LC-JFp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tRD-b7-f39">
-                                <rect key="frame" x="16" y="774" width="382" height="32"/>
+                                <rect key="frame" x="44.5" y="774" width="325" height="32"/>
                                 <segments>
                                     <segment title="Toner Lite"/>
                                     <segment title="Watercolor"/>
                                     <segment title="Open Rail"/>
                                     <segment title="Open Sea"/>
-                                    <segment title="NOAA"/>
                                 </segments>
                                 <connections>
                                     <action selector="pickedMap:" destination="Egx-iD-ZUj" eventType="valueChanged" id="jdT-7L-oYR"/>
@@ -151,7 +151,7 @@
         <!--Double-->
         <scene sceneID="tCT-HB-VoN">
             <objects>
-                <viewController id="12F-nK-ojs" customClass="DoubleOverlayViewController" customModule="Tiler_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="12F-nK-ojs" customClass="DoubleOverlayViewController" customModule="Tiler_Example_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NGe-WJ-Lsh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -184,7 +184,7 @@
         <!--Map Warper-->
         <scene sceneID="E0L-AJ-Ujd">
             <objects>
-                <viewController id="3sx-vy-Zm3" customClass="MapWarperViewController" customModule="Tiler_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3sx-vy-Zm3" customClass="MapWarperViewController" customModule="Tiler_Example_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UXs-xG-KoE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
