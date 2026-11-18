@@ -30,7 +30,5 @@ let package = Package(
         .testTarget(
             name: "MapTapTilerTests",
             dependencies: ["MapTapTiler"]),
-    ],
-    // Swift 6 strict concurrency is a separate migration; build in Swift 5 mode until then.
-    swiftLanguageModes: [.v5]
+    ]
 )

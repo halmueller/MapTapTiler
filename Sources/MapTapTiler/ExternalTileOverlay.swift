@@ -92,28 +92,37 @@ import MapKit
         let tileFileURL = parentXFolderURL.appendingPathComponent(fileNameForTile(path))
         let cachedTile = self.cachedTile(at: tileFileURL)
 
-        if let cachedTile = cachedTile, cachedTile.age < refreshCacheAgeSeconds {
+        if let cachedTile, cachedTile.age < refreshCacheAgeSeconds {
             result(cachedTile.data, nil)
             return
         }
 
+        // MapKit's result handler can be called from any thread, but it isn't marked @Sendable.
+        nonisolated(unsafe) let result = result
         let request = URLRequest(url: self.url(forTilePath: path))
 		#if targetEnvironment(simulator)
 		debugPrint(#function, "fetching", request)
 		#endif
-        let task = urlSession.dataTask(with: request) { [tooStaleCacheAgeSeconds] data, response, error in
-            let statusCode = (response as? HTTPURLResponse)?.statusCode
-            if statusCode == 200, let data = data {
-                try? FileManager.default.createDirectory(at: parentXFolderURL, withIntermediateDirectories: true, attributes: nil)
-                if (try? data.write(to: tileFileURL, options: [.atomic])) == nil {
-                    debugPrint("cache write failure", tileFileURL.path)
+        Task { [urlSession, tooStaleCacheAgeSeconds] in
+            var statusCode: Int?
+            var fetchError: Error?
+            do {
+                let (data, response) = try await urlSession.data(for: request)
+                statusCode = (response as? HTTPURLResponse)?.statusCode
+                if statusCode == 200 {
+                    try? FileManager.default.createDirectory(at: parentXFolderURL, withIntermediateDirectories: true)
+                    if (try? data.write(to: tileFileURL, options: [.atomic])) == nil {
+                        debugPrint("cache write failure", tileFileURL.path)
+                    }
+                    result(data, nil)
+                    return
                 }
-                result(data, nil)
-                return
+            } catch {
+                fetchError = error
             }
 
             // The fetch failed. An older cached tile is better than nothing, unless it's too stale to show.
-            if let cachedTile = cachedTile, cachedTile.age < tooStaleCacheAgeSeconds {
+            if let cachedTile, cachedTile.age < tooStaleCacheAgeSeconds {
                 result(cachedTile.data, nil)
                 return
             }
@@ -123,11 +132,10 @@ import MapKit
                 return
             }
 			#if targetEnvironment(simulator)
-            debugPrint(#function, statusCode ?? 0, error?.localizedDescription ?? "no response")
+            debugPrint("loadTile(at:result:)", statusCode ?? 0, fetchError?.localizedDescription ?? "no response")
 			#endif
-            result(nil, error ?? URLError(.badServerResponse))
+            result(nil, fetchError ?? URLError(.badServerResponse))
         }
-        task.resume()
     }
 
     /// The cached tile at `fileURL` and how many seconds old it is, or nil if there isn't one.
