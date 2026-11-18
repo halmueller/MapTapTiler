@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,9 +6,9 @@ import PackageDescription
 let package = Package(
     name: "MapTapTiler",
     platforms: [
-        .macOS(.v10_13),
-        .iOS(.v11),
-        .tvOS(.v11)
+        .macOS(.v15),
+        .iOS(.v18),
+        .tvOS(.v18)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
@@ -30,5 +30,7 @@ let package = Package(
         .testTarget(
             name: "MapTapTilerTests",
             dependencies: ["MapTapTiler"]),
-    ]
+    ],
+    // Swift 6 strict concurrency is a separate migration; build in Swift 5 mode until then.
+    swiftLanguageModes: [.v5]
 )
