@@ -19,30 +19,48 @@ import MapKit
 	let cacheExtension: String
     let maximumServerZ: Int
 
-    @objc public convenience init(sourceDescription: MapSourceDescription) {
-        // The Open Sea Map tile server returns 404 for blank tiles, and also when it's
-        // too heavily loaded to return a tile. Maybe some other sources do too? We'll
-        // do our own cacheing and not use NSURLSession's.
-        let sessionConfiguration = URLSessionConfiguration.default
-        sessionConfiguration.urlCache = nil
-        sessionConfiguration.requestCachePolicy = .reloadIgnoringLocalCacheData
-        self.init(sourceDescription: sourceDescription, sessionConfiguration: sessionConfiguration)
+    @objc public init(sourceDescription: MapSourceDescription) {
+        self.cacheName = sourceDescription.cacheName
+        self.cacheExtension = sourceDescription.cacheExtension
+        self.maximumServerZ = sourceDescription.maximumServerZ
+        self.refreshCacheAgeSeconds = sourceDescription.refreshCacheAgeSeconds
+        self.tooStaleCacheAgeSeconds = sourceDescription.tooStaleCacheAgeSeconds
+        self.urlSession = URLSession(configuration: Self.defaultSessionConfiguration())
+        super.init(urlTemplate: sourceDescription.tileURLTemplate)
+        configure(from: sourceDescription)
     }
 
     /// Lets tests supply a session configuration with a stubbed network.
+    ///
+    /// This is a designated initializer rather than a convenience one that the public initializer
+    /// calls: delegating between initializers of an MKTileOverlay subclass releases the half-built
+    /// overlay, and MKTileOverlay's dealloc then crashes.
     init(sourceDescription: MapSourceDescription, sessionConfiguration: URLSessionConfiguration) {
         self.cacheName = sourceDescription.cacheName
-		self.cacheExtension = sourceDescription.cacheExtension
+        self.cacheExtension = sourceDescription.cacheExtension
         self.maximumServerZ = sourceDescription.maximumServerZ
         self.refreshCacheAgeSeconds = sourceDescription.refreshCacheAgeSeconds
         self.tooStaleCacheAgeSeconds = sourceDescription.tooStaleCacheAgeSeconds
         self.urlSession = URLSession(configuration: sessionConfiguration)
-
         super.init(urlTemplate: sourceDescription.tileURLTemplate)
+        configure(from: sourceDescription)
+    }
+
+    /// The Open Sea Map tile server returns 404 for blank tiles, and also when it's
+    /// too heavily loaded to return a tile. Maybe some other sources do too? We'll
+    /// do our own cacheing and not use NSURLSession's.
+    static func defaultSessionConfiguration() -> URLSessionConfiguration {
+        let sessionConfiguration = URLSessionConfiguration.default
+        sessionConfiguration.urlCache = nil
+        sessionConfiguration.requestCachePolicy = .reloadIgnoringLocalCacheData
+        return sessionConfiguration
+    }
+
+    private func configure(from sourceDescription: MapSourceDescription) {
         self.minimumZ = sourceDescription.minimumZ
         self.maximumZ = sourceDescription.maximumOverzoomZ
         self.canReplaceMapContent = sourceDescription.isOpaque
-		self.tileSize = CGSize(width: sourceDescription.tileWidth, height: sourceDescription.tileHeight)
+        self.tileSize = CGSize(width: sourceDescription.tileWidth, height: sourceDescription.tileHeight)
 
 		#if targetEnvironment(simulator)
 		let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)

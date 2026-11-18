@@ -64,6 +64,23 @@ final class MapTapTilerTests: XCTestCase {
         return outcome
     }
 
+    // MARK: - Creating
+
+    func testPublicInitializerCopiesTheDescription() {
+        // Apps use this initializer; it once crashed in MKTileOverlay's dealloc when it delegated to another init.
+        let description = MapSourceDescription(
+            name: "Test", attribution: "Test", isOpaque: true, appleMapType: .standard, isAppleMap: false,
+            tileURLTemplate: "https://tiles.example.com/{z}/{x}/{y}.png", cacheName: cacheName, cacheExtension: "png",
+            tileWidth: 512, tileHeight: 512, isGeometryFlipped: false, minimumZ: 3, maximumServerZ: 16,
+            maximumOverzoomZ: 19)
+        let overlay = ExternalTileOverlay(sourceDescription: description)
+        XCTAssertEqual(overlay.minimumZ, 3)
+        XCTAssertEqual(overlay.maximumZ, 19)
+        XCTAssertTrue(overlay.canReplaceMapContent)
+        XCTAssertEqual(overlay.tileSize, CGSize(width: 512, height: 512))
+        XCTAssertNil(overlay.urlSession.configuration.urlCache)
+    }
+
     // MARK: - Server answers
 
     func testTileIsReturnedAndCached() {
